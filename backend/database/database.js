@@ -3,8 +3,11 @@ const mongoose = require(`mongoose`);
 mongoose.set("strictQuery", false);
 
 async function connectDB() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/EcommerceDB");
-  console.log(`Connected to the Database`);
+  mongoose
+    .connect(process.env.DB_URL)
+    .then((data) =>
+      console.log(`Server connected to the Database, DB Host: ${data.connection.host}`)
+    );
 
   //   mongoose.connection.close();
   // refer to documentation for more methods - https://mongoosejs.com/docs/index.html
