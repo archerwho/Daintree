@@ -6,12 +6,17 @@ const {
   addProduct,
   getProductDetails,
 } = require(`../controllers/productController`);
+const { isAuthenticatedUser } = require("../middleware/authentication");
 const router = express.Router();
 
 router.route(`/products`).get(getAllProducts);
 
-router.route(`/product/new`).post(addProduct);
+router.route(`/product/new`).post(isAuthenticatedUser, addProduct);
 
-router.route(`/product/:id`).put(updateProduct).delete(deleteProduct).get(getProductDetails);
+router
+  .route(`/product/:id`)
+  .put(updateProduct)
+  .delete(deleteProduct)
+  .get(getProductDetails);
 
 module.exports = router;
