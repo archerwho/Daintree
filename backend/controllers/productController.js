@@ -6,7 +6,7 @@ const ApiFeatures = require("../utils/apifeatures");
 // Find all products.
 exports.getAllProducts = catchAsyncErrors(async (req, res) => {
   const resultPerPage = 5;
-  const productCount = await Product.countDocuments()
+  const productCount = await Product.countDocuments();
   const apiFeature = new ApiFeatures(Product.find({}), req.query)
     .search()
     .filter()
@@ -16,7 +16,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res) => {
   res.status(200).json({
     success: true,
     products,
-    productCount
+    productCount,
   });
 });
 
@@ -36,11 +36,12 @@ exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
 
 //Launch a product. --Admin
 exports.addProduct = catchAsyncErrors(async (req, res) => {
+  req.body.createdBy = req.user.id;                            ///*********Confirm Later*********///
   const product = await Product.create(req.body);
   res.status(201).json({
     success: true,
     message: `Product added`,
-    product,
+    product, 
   });
 });
 

@@ -13,3 +13,17 @@ exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
   req.user = await User.findById(decodedData.id);
   next();
 });
+
+exports.authorizedUser = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.typeOfUser)) {
+      return next(
+        new ErrorHandler(
+          `${req.user.typeOfUser} does not have access to this path.`,
+          403
+        )
+      );
+    }
+    next();
+  };
+};
