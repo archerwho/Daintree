@@ -74,10 +74,8 @@ userSchema.methods.checkPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-module.exports = new mongoose.model(`User`, userSchema);
-
-//Resetting the Password
-userSchema.methods.getResetPasswordToken = async function () {
+//Resetting the Password (generating password token)
+userSchema.methods.getResetPasswordToken = function () {
   const resetToken = crypto.randomBytes(20).toString(`hex`);
   //hashing and adding to resetPasswordToken in userSchema
   this.resetPasswordToken = crypto
@@ -89,3 +87,5 @@ userSchema.methods.getResetPasswordToken = async function () {
 
   return resetToken;
 };
+
+module.exports = new mongoose.model(`User`, userSchema);

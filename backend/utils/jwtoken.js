@@ -1,6 +1,6 @@
 // Creating token and saving in cookie
 
-const sendToken = (user, statusCode, res) => {
+const sendToken = (user, statusCode,message = `Updated`, res) => {
   const token = user.getJWToken();
   // Options for cookie
   const options = {
@@ -12,6 +12,7 @@ const sendToken = (user, statusCode, res) => {
 
   res.status(statusCode).cookie(`token`, token, options).json({
     success: true,
+    message: message,
     user,
     token,
   });

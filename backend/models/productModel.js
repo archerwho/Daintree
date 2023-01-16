@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
     required: [true, `Please enter product Price.`],
     max: [999999, `Price can't be more than 7 figures.`],
   },
-  rating: {
+  averageRating: {
     type: Number,
     default: 0,
   },
@@ -47,7 +47,16 @@ const productSchema = new mongoose.Schema({
   },
   reviews: [
     {
-      name: {
+      createdBy: {
+        type: mongoose.Schema.ObjectId,
+        ref: `User`,
+        required: [true],
+      },
+      firstName: {
+        type: String,
+        required: true,
+      },
+      lastName: {
         type: String,
         required: true,
       },
@@ -61,11 +70,7 @@ const productSchema = new mongoose.Schema({
       },
     },
   ],
-  createdBy: {
-    type: mongoose.Schema.ObjectId,
-    ref: `User`,
-    required: [true],
-  },
+
   launchedOn: {
     type: Date,
     default: Date.now,
