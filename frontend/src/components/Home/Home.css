@@ -1,0 +1,55 @@
+.banner {
+  background-image: linear-gradient(to bottom right, #eddcd2, #ddbea9);
+ 
+  height: 89.4vmin;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0 0, 100% 0, 100% 73%, 0 97%);
+  color: #cb997e;
+}
+.banner > h1 {
+  margin: 5vmax;
+  font: 600 2.5vmax "Montserrat";
+}
+.banner > p {
+  font: 300 1.4vmax "Montserrat";
+}
+.banner > a {
+  text-decoration: none;
+  height: 60px;
+}
+.banner > a > button {
+  margin-bottom: 5vmax;
+  cursor: pointer;
+  border: 3px solid #cb997e;
+  border-radius: 0;
+  padding: 1vmax;
+  transition: all 0.5s;
+  width: 18vmax;
+  font: 800 1.2vmax "Montserrat";
+}
+.banner > a > button:hover {
+  background-color: #fff1e6;
+  color: #cb997e;
+}
+.homeHeading {
+    color: #cb997e;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.4vmax;
+    border-bottom: 2px solid #ddbea9;
+    width: 20vmax;
+    padding: 1vmax;
+    margin: 5vmax auto;
+}
+.container {
+  display: flex;
+  margin: 1vmax auto;
+  width: 90vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}

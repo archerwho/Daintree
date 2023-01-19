@@ -1,0 +1,10 @@
+* {
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #eee;
+height: 100%;
+}

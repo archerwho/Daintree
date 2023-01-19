@@ -1,0 +1,76 @@
+footer {
+  margin-top: 10vmax;
+  padding: 1.5vmax;
+  font-family: "Montserrat", sans-serif;
+  background-color: #cb997e;
+  color: #fff1e6;
+  display: flex;
+  align-items: center;
+}
+
+.leftfooter {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.leftfooter > img {
+  width: 15vmax;
+  margin: 0.25vmax;
+  cursor: pointer;
+}
+
+.midfooter {
+  width: 60%;
+  text-align: center;
+}
+.midfooter > h1 {
+  font-size: 5vmax;
+}
+.midfooter > h1 > p {
+  font-size: 1vmax;
+}
+.midfooter > p {
+  max-width: 60%;
+  margin: 3vmax auto 1vmax auto;
+  color: #ddbea9;
+}
+
+.rightfooter {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rightfooter > h4 {
+  font-size: 2vmax;
+}
+.rightfooter > div {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.insta :hover {
+  transition: all 0.5s;
+  background-image: linear-gradient(
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
+}
+.face :hover {
+  transition: all 0.5s;
+  background-color: white;
+  color: #3b5998;
+}
+.you :hover {
+  transition: all 0.5s;
+  background-color: white;
+  color: #c4302b;
+}
