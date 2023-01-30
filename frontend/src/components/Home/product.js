@@ -4,10 +4,11 @@ import Rating from "@mui/material/Rating";
 import CardMedia from "@mui/material/CardMedia";
 import "./product.css";
 
+
+
 const Product = ({ product }) => {
-  const value = 3.5;
   return (
-    <Link to={product._id} sx={{ textDecoration: "none", cursor: "pointer" }}>
+    <Link href={`/product/${product._id}`} sx={{ textDecoration: "none", cursor: "pointer" }}  >
       <div className="productCard">
         <div>
           <CardMedia
@@ -20,15 +21,14 @@ const Product = ({ product }) => {
         <p className="productName">{product.name}</p>
         <p className="description">
           {product.description}
-          {"A Regular T shirt with good fabric and much more.asd asd ada sda dasd asd a.".slice(
-            0,
-            10
-          ).concat("...")}
+          {"A Regular T shirt with good fabric and much more.asd asd ada sda dasd asd a."
+            .slice(0, 10)
+            .concat("...")}
         </p>
         <div className="rating">
           <Rating
             name="half-rating-read"
-            value={value}
+            value={product.averageRating}
             precision={0.5}
             readOnly
             sx={{
@@ -44,14 +44,14 @@ const Product = ({ product }) => {
               color: "#e26d5c",
             }}
             name="half-rating-read"
-            value={value}
+            value={product.averageRating}
             precision={0.5}
             readOnly
             size="small"
           />
-          <span className="review">256</span>
+          <span className="review">{product.numberOfReviews}</span>
         </div>
-        <span className="productPrice">{product.price}</span>
+        <span className="productPrice">{`₹ ${product.price}`}</span>
       </div>
     </Link>
   );

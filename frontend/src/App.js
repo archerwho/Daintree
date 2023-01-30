@@ -5,6 +5,7 @@ import Webfont from "webfontloader";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home.js";
+import ProductDetails from "./components/Product/ProductDetails"
 
 function App() {
   React.useEffect(() => {
@@ -18,7 +19,8 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route exaxt path="/" element={Home} />
+        <Route exaxt path="/" element={<Home/>} />
+        <Route exaxt path="/product/:id" element={<ProductDetails/>} />
       </Routes>
       <Footer />
     </Router>
