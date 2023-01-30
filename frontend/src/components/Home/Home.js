@@ -7,9 +7,7 @@ import MetaData from "../layout/MetaData";
 import { getProduct } from "../../actions/productAction";
 import { useDispatch, useSelector } from "react-redux"; //
 import Loader from "../layout/Loader/Loader";
-import Alert from "@mui/material/Alert";
-import Collapse from "@mui/material/Collapse";
-import CloseIcon from "@mui/icons-material/Close";
+import ErrorAlert from "../layout/Alert/ErrorAlert";
 
 function Home() {
   const dispatch = useDispatch();
@@ -21,30 +19,10 @@ function Home() {
     dispatch(getProduct());
   }, [dispatch]);
 
-  const [open, setOpen] = React.useState(true);
   return (
     <Fragment>
       {error ? (
-        <Collapse in={open} sx={{ width: "100vmax" }}>
-          <Alert
-            action={
-              <IconButton
-                aria-label="close"
-                color="inherit"
-                size="small"
-                onClick={() => {
-                  setOpen(false);
-                }}
-              >
-                <CloseIcon fontSize="inherit" />
-              </IconButton>
-            }
-            sx={{ mb: 2 }}
-            severity="error"
-          >
-            {error}
-          </Alert>
-        </Collapse>
+        <ErrorAlert error={error} />
       ) : (
         <Fragment>
           {loading ? (
