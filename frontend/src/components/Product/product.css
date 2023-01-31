@@ -9,17 +9,7 @@
   transition: all 0.5s;
   padding-bottom: 0.5vmax;
 }
-.rating {
-  margin: 0.3vmax;
-  display: flex;
-  justify-content: flex-start;
-}
-.review {
-  padding-left: 1vmax;
-  padding-top: 0.1vmax;
-  font-size: 1.1vmax;
-  color: #e26d5c;
-}
+
 .productName {
   font-size: 1.2vmax;
   margin: 1vmax 0.5vmax;

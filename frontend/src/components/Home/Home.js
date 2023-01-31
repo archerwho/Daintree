@@ -2,12 +2,12 @@ import React, { Fragment, useEffect } from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import IconButton from "@mui/material/IconButton";
 import "./Home.css";
-import Product from "./product.js";
-import MetaData from "../layout/MetaData";
+import Product from "../Product/product";
 import { getProduct } from "../../actions/productAction";
 import { useDispatch, useSelector } from "react-redux"; //
-import Loader from "../layout/Loader/Loader";
 import ErrorAlert from "../layout/Alert/ErrorAlert";
+import MetaData from "../layout/MetaData/MetaData";
+import Loader from "../Loader/Loader";
 
 function Home() {
   const dispatch = useDispatch();

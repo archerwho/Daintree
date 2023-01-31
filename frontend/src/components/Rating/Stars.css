@@ -1,0 +1,16 @@
+.rating {
+    margin: 0.3vmax;
+    justify-content: flex-start;
+  }
+  .review-md {
+    padding-left: 1vmax;
+    padding-top: 0.1vmax;
+    font-size: 1.1vmax;
+    color: #e26d5c;
+  }
+
+  .review-xs {
+    padding-left: 0;
+    padding-top: 0.1vmax;
+    color: #e26d5c;
+  }
