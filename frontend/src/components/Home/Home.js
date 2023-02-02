@@ -2,10 +2,10 @@ import React, { Fragment, useEffect } from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import IconButton from "@mui/material/IconButton";
 import "./Home.css";
-import Product from "../Product/product";
-import { getProduct } from "../../actions/productAction";
+import ProductCard from "../Product/ProductCard";
+import { clearErrors, getProduct } from "../../actions/productAction";
 import { useDispatch, useSelector } from "react-redux"; //
-import ErrorAlert from "../layout/Alert/ErrorAlert";
+import ErrorAlert from "../Alert/ErrorAlert";
 import MetaData from "../layout/MetaData/MetaData";
 import Loader from "../Loader/Loader";
 
@@ -16,8 +16,11 @@ function Home() {
     (state) => state.products
   );
   useEffect(() => {
+    if (error) {
+      dispatch(clearErrors())
+    }
     dispatch(getProduct());
-  }, [dispatch]);
+  }, [dispatch, error]);
 
   return (
     <Fragment>
@@ -46,7 +49,7 @@ function Home() {
               <div className="container" id="container">
                 {products &&
                   products.map((product) => (
-                    <Product product={product} key={product._id} />
+                    <ProductCard product={product} key={product._id} />
                   ))}
               </div>
               <br />

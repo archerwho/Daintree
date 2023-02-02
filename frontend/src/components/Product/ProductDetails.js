@@ -1,23 +1,27 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProductDetails } from "../../actions/productAction";
+import { clearErrors, getProductDetails } from "../../actions/productAction";
 import Loader from "../Loader/Loader";
 import ErrorAlert from "../Alert/ErrorAlert";
 import "./ProductDetails.css";
 import Carousel from "../Carousel/Carousel";
 import Stars from "../Rating/Stars";
-import ReviewCard from "./ReviewCard.js"
+import ReviewCard from "./ReviewCard.js";
+import "./ReviewCard.css";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProductDetails(id));
-  }, [dispatch, id]);
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
+  useEffect(() => {
+    if (error) {
+      dispatch(clearErrors())
+    }
+    dispatch(getProductDetails(id));
+  }, [dispatch, id, error]);
 
   return (
     <Fragment>

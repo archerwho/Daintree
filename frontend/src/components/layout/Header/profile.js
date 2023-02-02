@@ -7,6 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 
 const settings = ["Profile", "Your Orders", "Dashboard", "Logout"];
+const link = ["/profile", "/yourorders", "/dashboard", "/"]
 
 const Profile = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -44,13 +45,23 @@ const Profile = () => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {settings.map((setting) => (
+        {settings.map((setting, index) => (
           <MenuItem
             key={setting}
             onClick={handleCloseUserMenu}
             sx={{ fontFamily: "Montserrat" }}
           >
-            <Typography textAlign="center">{setting}</Typography>
+            <Typography textAlign="center"><a
+                href={link[index]}
+                style={{
+                  textDecoration: "none",
+                  color: "#CB997E",
+                  fontSize: "0.8rem",
+                  fontFamily: "Montserrat"
+                }}
+              >
+                {setting}
+              </a></Typography>
           </MenuItem>
         ))}
       </Menu>

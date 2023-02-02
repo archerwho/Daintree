@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "@mui/material/Link";
 import CardMedia from "@mui/material/CardMedia";
-import "./product.css";
+import "./ProductCard.css";
 import Stars from "../Rating/Stars";
 
-const Product = ({ product }) => {
+const ProductCard = ({ product }) => {
   return (
     <Link
       href={`/product/${product._id}`}
@@ -27,10 +27,10 @@ const Product = ({ product }) => {
             .concat("...")}
         </p>
         <Stars value={product.averageRating} review={product.numberOfReviews} />
-        <span className="productPrice" >{`₹ ${product.price}`}</span>
+        <span className="productPrice">{`₹ ${product.price}`}</span>
       </div>
     </Link>
   );
 };
 
-export default Product;
+export default ProductCard;

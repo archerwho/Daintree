@@ -16,11 +16,13 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const Cart = () => {
   return (
     <Box sx={{ flexGrow: 0.07 }}>
-      <IconButton aria-label="cart">
-        <StyledBadge badgeContent={1} sx={{ color: "#F0EFEB" }}>
-          <ShoppingCartCheckoutIcon sx={{ color: "#F0EFEB", fontSize: 30 }} />
-        </StyledBadge>
-      </IconButton>
+      <a href="/cart">
+        <IconButton aria-label="cart">
+          <StyledBadge badgeContent={1} sx={{ color: "#F0EFEB" }}>
+            <ShoppingCartCheckoutIcon sx={{ color: "#F0EFEB", fontSize: 30 }} />
+          </StyledBadge>
+        </IconButton>
+      </a>
     </Box>
   );
 };
