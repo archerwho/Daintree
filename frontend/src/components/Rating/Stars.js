@@ -14,7 +14,7 @@ const Stars = (props) => {
             color: "#e26d5c",
           }}
           name="half-rating-read"
-          value={props.value}
+          value={props.stars}
           precision={0.5}
           readOnly
           size="small"
@@ -27,7 +27,7 @@ const Stars = (props) => {
       <Box className="rating" sx={{ display: { xs: "none", md: "flex" } }}>
         <Rating
           name="half-rating-read"
-          value={props.value}
+          value={props.stars}
           precision={0.5}
           readOnly
           size="medium"

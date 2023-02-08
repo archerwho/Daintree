@@ -18,7 +18,7 @@ const ProductDetails = () => {
   );
   useEffect(() => {
     if (error) {
-      dispatch(clearErrors())
+      dispatch(clearErrors());
     }
     dispatch(getProductDetails(id));
   }, [dispatch, id, error]);
@@ -45,7 +45,7 @@ const ProductDetails = () => {
                   </div>
                   <div className="DetailsBlock-2">
                     <Stars
-                      value={product.averageRating}
+                      stars={product.averageRating}
                       review={product.numberOfReviews}
                     />
                   </div>
@@ -54,7 +54,7 @@ const ProductDetails = () => {
                     <div className="DetailsBlock-3-1">
                       <div className="DetailsBlock-3-1-1">
                         <button>-</button>
-                        <input type="number" value="1" />
+                        <input type="number" value="1" readOnly />
                         <button>+</button>
                       </div>
                       <button>Add to Cart</button>
@@ -81,7 +81,7 @@ const ProductDetails = () => {
                 <div className="reviews">
                   {product.reviews &&
                     product.reviews.map((review) => (
-                      <ReviewCard review={review} />
+                      <ReviewCard review={review} key={review.createdBy} />
                     ))}
                 </div>
               ) : (

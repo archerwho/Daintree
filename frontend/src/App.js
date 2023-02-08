@@ -6,6 +6,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home.js";
 import ProductDetails from "./components/Product/ProductDetails"
+import Products from "./components/Product/Products.js"
+import history from "./components/layout/Header/history";
 
 function App() {
   React.useEffect(() => {
@@ -16,11 +18,13 @@ function App() {
     });
   });
   return (
-    <Router>
+    <Router history={history}>
       <Header />
       <Routes>
         <Route exaxt path="/" element={<Home/>} />
         <Route exaxt path="/product/:id" element={<ProductDetails/>} />
+        <Route exaxt path="/products" element={<Products/>} />
+        <Route path="/products/:keyword" element={<Products/>} />
       </Routes>
       <Footer />
     </Router>

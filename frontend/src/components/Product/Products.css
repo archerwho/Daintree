@@ -1,0 +1,16 @@
+.productsHeading {
+    color: #cb997e;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.4vmax;
+    border-bottom: 2px solid #ddbea9;
+    width: 20vmax;
+    padding: 1vmax;
+    margin: 2vmax auto;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 5vmax;
+}

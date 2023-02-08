@@ -24,7 +24,7 @@ const Profile = () => {
       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
         <Avatar
           alt="Profile picture"
-          src="/static/images/avatar/2.jpg"
+          src=""
           sx={{ backgroundColor: "#DDBEA9" }}
         />
       </IconButton>

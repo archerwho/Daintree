@@ -85,7 +85,6 @@ export function MenuMini() {
             onClick={handleCloseNavMenu}
             sx={{ fontFamily: "Montserrat" }}
           >
-            <Button textAlign="center">
               <a
                 href={link[index]}
                 style={{
@@ -96,7 +95,6 @@ export function MenuMini() {
               >
                 {page}
               </a>
-            </Button>
           </MenuItem>
         ))}
       </Menu>

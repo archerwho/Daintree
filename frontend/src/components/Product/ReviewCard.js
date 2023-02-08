@@ -10,7 +10,7 @@ const ReviewCard = ({ review }) => {
       <p>
         {review.firstName} {review.lastName}
       </p>
-      <Review value={review.rating} review={review.comment} className="stars"/>
+      <Review stars={review.rating} review={review.comment} className="stars"/>
     </div>
   );
 };

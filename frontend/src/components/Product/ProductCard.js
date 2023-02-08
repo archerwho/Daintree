@@ -21,12 +21,9 @@ const ProductCard = ({ product }) => {
         </div>
         <p className="productName">{product.name}</p>
         <p className="description">
-          {product.description}
-          {"A Regular T shirt with good fabric and much more.asd asd ada sda dasd asd a."
-            .slice(0, 10)
-            .concat("...")}
+          {product.description.slice(0, 30).concat("...")}
         </p>
-        <Stars value={product.averageRating} review={product.numberOfReviews} />
+        <Stars stars={product.averageRating} review={product.numberOfReviews} />
         <span className="productPrice">{`₹ ${product.price}`}</span>
       </div>
     </Link>

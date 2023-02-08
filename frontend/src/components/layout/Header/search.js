@@ -5,6 +5,7 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
+import history from "./history";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -49,22 +50,43 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export function SearchBar() {
+  const [keyword, setKeyword] = React.useState("");
+  const searchSubmitHandler = (e) => {
+    // e.preventDefault();
+    if (keyword.trim()) {
+      history.push(`/products/${keyword}`);
+    } else {
+      history.push(`/products`);
+    }
+  };
   return (
     <Box sx={{ flexGrow: 0.07, display: { xs: "none", md: "flex" } }}>
       <Search>
         <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>
-        <StyledInputBase
-          placeholder="Search…"
-          inputProps={{ "aria-label": "search" }}
-        />
+        <form onSubmit={searchSubmitHandler}>
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ "aria-label": "search" }}
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+        </form>
       </Search>
     </Box>
   );
 }
 
 export function SearchBarMini() {
+  const [keyword, setKeyword] = React.useState("");
+  const searchSubmitHandler = (e) => {
+    // e.preventDefault();
+    if (keyword.trim()) {
+      history.push(`/products/${keyword}`);
+    } else {
+      history.push(`/products`);
+    }
+  };
   const [anchorElSeacrch, setAnchorElSearch] = React.useState(null);
 
   const handleOpenSearch = (event) => {
@@ -101,10 +123,13 @@ export function SearchBarMini() {
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ "aria-label": "search" }}
-          />
+          <form onSubmit={searchSubmitHandler}>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+              onChange={(e) => setKeyword(e.target.value)}
+            />
+          </form>
         </Search>
       </Menu>
     </Box>

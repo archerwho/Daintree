@@ -15,7 +15,7 @@ const Review = (props) => {
       <div>
         <Rating
           name="half-rating-read"
-          value={props.value}
+          value={props.stars}
           precision={0.5}
           readOnly
           size="medium"
