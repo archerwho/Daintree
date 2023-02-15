@@ -11,6 +11,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     top: 1,
     border: `2px solid ${theme.palette.background.paper}`,
     padding: "5px 1px 3px 0px",
+    
   },
 }));
 const Cart = () => {
