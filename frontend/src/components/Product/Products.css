@@ -10,13 +10,15 @@
 }
 
 .products {
+  border-left: 1px solid rgb(0, 0, 0, 0.3);
   display: flex;
   flex-wrap: wrap;
   padding: 0 3vmax;
-  margin-left: 16vmax;
+  margin-left: 18vmax;
   margin-right: 3vmax;
   align-items: center;
   justify-content: center;
+  min-height: 60vh;
 }
 
 .pagination {
@@ -30,12 +32,35 @@
   width: 14vmax;
   position: absolute;
   top: 15vmax;
-  left: 2vmax;
+  left: 1vmax;
+}
+
+.categoryBox {
+  padding: 0%;
+}
+.category-link {
+  list-style: none;
+  color: rgb(203, 153, 126, 0.7);
+  font: 400 1vmax "Montserrat";
+  margin: 0.4vmax;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.category-link:hover {
+  color: #cb997e;
 }
 
 @media screen and (max-width: 600px) {
   .products {
     margin-left: 0;
     margin-right: 0;
+  }
+  .filterBox {
+    position: unset;
+    margin: 1vmax auto;
+    width: 20vmax;
+  }
+  .category-link {
+    font: 400 1.3vmax "Montserrat";
   }
 }

@@ -11,6 +11,7 @@ import ReviewCard from "./ReviewCard.js";
 import "./ReviewCard.css";
 
 const ProductDetails = () => {
+  
   const { id } = useParams();
   const dispatch = useDispatch();
   const { product, loading, error } = useSelector(
@@ -22,6 +23,7 @@ const ProductDetails = () => {
     }
     dispatch(getProductDetails(id));
   }, [dispatch, id, error]);
+  document.title = `${product.name} | Daintree`
 
   return (
     <Fragment>

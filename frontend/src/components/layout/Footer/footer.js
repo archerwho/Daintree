@@ -21,7 +21,7 @@ function Footer() {
           Daintree<p>You&apos;ll find it here!</p>
         </h1>
 
-        <p>copyright &copy; Archer Enterprises 2020 - {currentYear}</p>
+        <p>copyright &copy; Archer Technologies 2020 - {currentYear}</p>
       </div>
       <div className="rightfooter">
         <h4>Find us on</h4>
