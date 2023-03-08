@@ -11,7 +11,6 @@ import ReviewCard from "./ReviewCard.js";
 import "./ReviewCard.css";
 
 const ProductDetails = () => {
-  
   const { id } = useParams();
   const dispatch = useDispatch();
   const { product, loading, error } = useSelector(
@@ -23,73 +22,64 @@ const ProductDetails = () => {
     }
     dispatch(getProductDetails(id));
   }, [dispatch, id, error]);
-  document.title = `${product.name} | Daintree`
+  document.title = `${product.name} | Daintree`;
 
   return (
     <Fragment>
-      {error ? (
-        <ErrorAlert error={error} />
+      {loading ? (
+        <Loader />
       ) : (
         <Fragment>
-          {loading ? (
-            <Loader />
-          ) : (
-            <Fragment>
-              <div className="ProductDetails">
-                <div className="ProductImages">
-                  {product.images && <Carousel images={product.images} />}
-                </div>
-                <div className="ProductInformation">
-                  <div className="DetailsBlock-1">
-                    <h2>{product.name}</h2>
+          <ErrorAlert error={error} />
+          <div className="ProductDetails">
+            <div className="ProductImages">
+              {product.images && <Carousel images={product.images} />}
+            </div>
+            <div className="ProductInformation">
+              <div className="DetailsBlock-1">
+                <h2>{product.name}</h2>
 
-                    <p>{`Product ID - ${product._id}`}</p>
-                  </div>
-                  <div className="DetailsBlock-2">
-                    <Stars
-                      stars={product.averageRating}
-                      review={product.numberOfReviews}
-                    />
-                  </div>
-                  <div className="DetailsBlock-3">
-                    <h1>{`₹ ${product.price}`}</h1>
-                    <div className="DetailsBlock-3-1">
-                      <div className="DetailsBlock-3-1-1">
-                        <button>-</button>
-                        <input type="number" value="1" readOnly />
-                        <button>+</button>
-                      </div>
-                      <button>Add to Cart</button>
-                    </div>
-                    <p>
-                      Status:{" "}
-                      <b
-                        className={
-                          product.stock < 1 ? "redColor" : "greenColor"
-                        }
-                      >
-                        {product.stock < 1 ? "Out of Stock" : "In Stock"}
-                      </b>
-                    </p>
-                  </div>
-                  <div className="DetailsBlock-4">
-                    Description : <p>{product.description}</p>
-                  </div>
-                  <button className="SubmitReview">Submit Review</button>
-                </div>
+                <p>{`Product ID - ${product._id}`}</p>
               </div>
-              <h3 className="ReviewsHeading">Reviews</h3>
-              {product.reviews && product.reviews[0] ? (
-                <div className="reviews">
-                  {product.reviews &&
-                    product.reviews.map((review) => (
-                      <ReviewCard review={review} key={review.createdBy} />
-                    ))}
+              <div className="DetailsBlock-2">
+                <Stars
+                  stars={product.averageRating}
+                  review={product.numberOfReviews}
+                />
+              </div>
+              <div className="DetailsBlock-3">
+                <h1>{`₹ ${product.price}`}</h1>
+                <div className="DetailsBlock-3-1">
+                  <div className="DetailsBlock-3-1-1">
+                    <button>-</button>
+                    <input type="number" value="1" readOnly />
+                    <button>+</button>
+                  </div>
+                  <button>Add to Cart</button>
                 </div>
-              ) : (
-                <p className="NoReviews">No Reviews Yet!</p>
-              )}
-            </Fragment>
+                <p>
+                  Status:{" "}
+                  <b className={product.stock < 1 ? "redColor" : "greenColor"}>
+                    {product.stock < 1 ? "Out of Stock" : "In Stock"}
+                  </b>
+                </p>
+              </div>
+              <div className="DetailsBlock-4">
+                Description : <p>{product.description}</p>
+              </div>
+              <button className="SubmitReview">Submit Review</button>
+            </div>
+          </div>
+          <h3 className="ReviewsHeading">Reviews</h3>
+          {product.reviews && product.reviews[0] ? (
+            <div className="reviews">
+              {product.reviews &&
+                product.reviews.map((review) => (
+                  <ReviewCard review={review} key={review.createdBy} />
+                ))}
+            </div>
+          ) : (
+            <p className="NoReviews">No Reviews Yet!</p>
           )}
         </Fragment>
       )}

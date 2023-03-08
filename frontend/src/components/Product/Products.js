@@ -28,7 +28,7 @@ const categories = [
 ];
 
 const Products = () => {
-  document.title = "Products | Daintree"
+  document.title = "Products | Daintree";
   const { keyword } = useParams();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -58,7 +58,9 @@ const Products = () => {
   };
   useEffect(() => {
     if (error) {
-      dispatch(clearErrors());
+      setTimeout(() => {
+        dispatch(clearErrors());
+      }, 5000);
     }
     dispatch(getProduct(keyword, currentPage, price, category, rating));
   }, [dispatch, error, keyword, currentPage, price, category, rating]);
@@ -68,78 +70,77 @@ const Products = () => {
   };
   return (
     <Fragment>
-      {error ? (
-        <ErrorAlert error={error} />
-      ) : (
-        <Fragment>
-          {loading ? (
+      <Fragment>
+        {loading ? (
+          <Fragment>
             <Loader />
-          ) : (
-            <Fragment>
-              <h2 className="productsHeading">Products</h2>
-              <div className="products">
-                {products &&
-                  products.map((product) => (
-                    <ProductCard product={product} key={product._id} />
-                  ))}
-              </div>
-              <div className="filterBox">
-                <Typography sx={{ color: "#CB997E" }}>Price</Typography>
+            <ErrorAlert error={error} />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <h2 className="productsHeading">Products</h2>
+            <div className="products">
+              {products &&
+                products.map((product) => (
+                  <ProductCard product={product} key={product._id} />
+                ))}
+            </div>
+            <div className="filterBox">
+              <Typography sx={{ color: "#CB997E" }}>Price</Typography>
+              <Slider
+                getAriaLabel={() => "Price Filter"}
+                value={price}
+                onChange={priceHandler}
+                valueLabelDisplay="auto"
+                min={0}
+                max={300000}
+                step={20000}
+                sx={{ color: "#CB997E" }}
+                size="small"
+              />
+              <Typography sx={{ color: "#CB997E" }}>Categories</Typography>
+              <ul className="categoryBox">
+                {categories.map((category) => (
+                  <li
+                    className="category-link"
+                    key={category}
+                    onClick={() => setCategory(category)}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+              <fieldset
+                style={{
+                  color: "rgb(203, 153, 126, 1)",
+                  padding: "0.2vmax 0.8vmax",
+                  border: "2px solid rgb(203, 153, 126, 0.5)",
+                }}
+              >
+                <Typography component="legend">Ratings Above</Typography>
                 <Slider
-                  getAriaLabel={() => "Price Filter"}
-                  value={price}
-                  onChange={priceHandler}
+                  value={rating}
+                  onChange={(e, newRating) => setRating(newRating)}
+                  aria-labelledby="continuous-slider"
                   valueLabelDisplay="auto"
                   min={0}
-                  max={300000}
-                  step={20000}
+                  max={5}
+                  step={0.5}
                   sx={{ color: "#CB997E" }}
                   size="small"
                 />
-                <Typography sx={{ color: "#CB997E" }}>Categories</Typography>
-                <ul className="categoryBox">
-                  {categories.map((category) => (
-                    <li
-                      className="category-link"
-                      key={category}
-                      onClick={() => setCategory(category)}
-                    >
-                      {category}
-                    </li>
-                  ))}
-                </ul>
-                <fieldset
-                  style={{
-                    color: "rgb(203, 153, 126, 1)",
-                    padding: "0.2vmax 0.8vmax",
-                    border: "2px solid rgb(203, 153, 126, 0.5)",
-                  }}
-                >
-                  <Typography component="legend">Ratings Above</Typography>
-                  <Slider
-                    value={rating}
-                    onChange={(e, newRating) => setRating(newRating)}
-                    aria-labelledby="continuous-slider"
-                    valueLabelDisplay="auto"
-                    min={0}
-                    max={5}
-                    step={0.5}
-                    sx={{ color: "#CB997E" }}
-                    size="small"
-                  />
-                </fieldset>
-              </div>
-              <div className="pagination">
-                <Pagination
-                  count={count ? count : 10}
-                  page={currentPage}
-                  onChange={setCurrentPageNo}
-                />
-              </div>
-            </Fragment>
-          )}
-        </Fragment>
-      )}
+              </fieldset>
+            </div>
+            <div className="pagination">
+              <Pagination
+                count={count ? count : 10}
+                page={currentPage}
+                onChange={setCurrentPageNo}
+              />
+            </div>
+          </Fragment>
+        )}
+      </Fragment>
     </Fragment>
   );
 };

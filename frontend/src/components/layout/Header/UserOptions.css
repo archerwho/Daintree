@@ -1,0 +1,15 @@
+
+.speedDialIcon {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  border-radius: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.speedDial > button {
+  height: 46px;
+  width: 46px;
+  background-color: #CB997E;
+}

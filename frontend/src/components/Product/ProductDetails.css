@@ -124,7 +124,7 @@
     align-items: center;
   }
   .ProductImages {
-    width: 80%;
+    width: 50%;
   }
   .ProductInformation {
     align-items: center;
@@ -194,5 +194,8 @@
     padding: 1.5vmax;
     width: 20vmax;
     margin: 3vmax 0;
+  }
+  .reviews {
+    width: 100%;
   }
 }

@@ -4,7 +4,7 @@ const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("./catchAsyncErrors");
 
 exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
-  console.log(req.cookies)
+  // console.log(req.cookies)
   const { token } = req.cookies;
   if (!token) {
     return next(new ErrorHandler(`Access requires Logging In.`));

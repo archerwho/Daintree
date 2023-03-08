@@ -7,8 +7,13 @@ import Profile from "./profile";
 import { SearchBar, SearchBarMini } from "./search";
 import { MenuBig, MenuMini } from "./menu";
 import { Logo, LogoMini } from "./logo";
+import {UserOptions} from "./UserOptions.js"
+import { useSelector } from "react-redux";
 
 function Header() {
+  const { isAuthenticated, user } = useSelector(
+    (state) => state.user
+  );
   return (
     <AppBar sx={{ backgroundColor: "#CB997E", position: "sticky" }}>
       <Container maxWidth="xl">
@@ -20,7 +25,7 @@ function Header() {
           <SearchBar />
           <SearchBarMini />
           <Cart />
-          <Profile />
+          {isAuthenticated ? <UserOptions user={user}/> : <Profile />}
         </Toolbar>
       </Container>
     </AppBar>
