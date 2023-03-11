@@ -5,7 +5,7 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
-import history from "./history";
+import { useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -50,13 +50,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export function SearchBar() {
+  const navigate = useNavigate();
   const [keyword, setKeyword] = React.useState("");
   const searchSubmitHandler = (e) => {
     // e.preventDefault();
     if (keyword.trim()) {
-      history.push(`/products/${keyword}`);
+      navigate(`/products/${keyword}`);
     } else {
-      history.push(`/products`);
+      navigate(`/products`);
     }
   };
   return (
@@ -78,13 +79,15 @@ export function SearchBar() {
 }
 
 export function SearchBarMini() {
+  const navigate = useNavigate();
+
   const [keyword, setKeyword] = React.useState("");
   const searchSubmitHandler = (e) => {
     // e.preventDefault();
     if (keyword.trim()) {
-      history.push(`/products/${keyword}`);
+      navigate(`/products/${keyword}`);
     } else {
-      history.push(`/products`);
+      navigate(`/products`);
     }
   };
   const [anchorElSeacrch, setAnchorElSearch] = React.useState(null);

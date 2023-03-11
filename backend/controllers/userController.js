@@ -13,12 +13,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     width: 150,
     crop: "scale",
   });
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-  } = req.body;
+  const { firstName, lastName, email, password } = req.body;
 
   const user = await User.create({
     firstName,
@@ -176,14 +171,35 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     lastName: req.body.lastName,
     email: req.body.email,
     mobileNumber: req.body.mobileNumber,
+    gender: req.body.gender,
   };
+  if (req.body.avatar === "undefined") {
+    const user = await User.findById(req.user.id);
+    newUserDetails.avatar = {
+      public_id: user.avatar.public_id,
+      url: user.avatar.url,
+    };
+  } else if (typeof req.body.avatar === "string") {
+    const user = await User.findById(req.user.id);
+    const imageId = user.avatar.public_id;
+    await cloudinary.v2.uploader.destroy(imageId);
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    });
+    newUserDetails.avatar = {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    };
+  }
 
   const user = await User.findByIdAndUpdate(req.user.id, newUserDetails, {
     new: true,
     runValidators: true,
   });
 
-  sendToken(user, 200, `Profile Updated.`, res);
+  sendToken(user, 200, `Profile Updated Successfully.`, res);
 });
 
 // Get all Users --Admin

@@ -5,16 +5,20 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import { useNavigate } from "react-router-dom";
 
 const pages = ["Home", "Products", "About", "Contact"];
 const link = ["/", "/products", "/about", "/contact"];
 
 export function MenuBig() {
+  const navigate = useNavigate();
+
   return (
     <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
       {pages.map((page, index, arr) => (
         <Button
           key={page}
+          onClick={() => navigate(`${link[index]}`)}
           sx={{
             my: 2,
             color: "#EDDCD2",
@@ -25,8 +29,7 @@ export function MenuBig() {
           }}
         >
           {" "}
-          <a
-            href={link[index]}
+          <p
             style={{
               textDecoration: "none",
               color: "#EDDCD2",
@@ -34,13 +37,14 @@ export function MenuBig() {
             }}
           >
             {page}
-          </a>
+          </p>
         </Button>
       ))}
     </Box>
   );
 }
 export function MenuMini() {
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -85,16 +89,16 @@ export function MenuMini() {
             onClick={handleCloseNavMenu}
             sx={{ fontFamily: "Montserrat" }}
           >
-              <a
-                href={link[index]}
-                style={{
-                  textDecoration: "none",
-                  color: "#CB997E",
-                  fontSize: "0.8rem",
-                }}
-              >
-                {page}
-              </a>
+            <p
+              onClick={() => navigate(`${link[index]}`)}
+              style={{
+                textDecoration: "none",
+                color: "#CB997E",
+                fontSize: "0.8rem",
+              }}
+            >
+              {page}
+            </p>
           </MenuItem>
         ))}
       </Menu>

@@ -4,12 +4,12 @@ import IconButton from "@mui/material/IconButton";
 import "./Home.css";
 import ProductCard from "../Product/ProductCard";
 import { clearErrors, getProduct } from "../../actions/productAction";
-import { useDispatch, useSelector } from "react-redux"; //
+import { useDispatch, useSelector } from "react-redux";
 import ErrorAlert from "../Alert/ErrorAlert";
-import MetaData from "../layout/MetaData/MetaData";
 import Loader from "../Loader/Loader";
 
 function Home() {
+  document.title = "Daintree | Online Store";
   const dispatch = useDispatch();
   const { loading, error, products } = useSelector(
     //, productsCount
@@ -17,7 +17,7 @@ function Home() {
   );
   useEffect(() => {
     if (error) {
-      dispatch(clearErrors())
+      dispatch(clearErrors());
     }
     dispatch(getProduct());
   }, [dispatch, error]);
@@ -32,7 +32,6 @@ function Home() {
             <Loader />
           ) : (
             <Fragment>
-              <MetaData title="Daintree | Online Shop" />
               <div className="banner">
                 <p>Welcome to Daintree</p>
                 <h1>Find Awesome Products Below...</h1>

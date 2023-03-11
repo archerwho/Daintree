@@ -23,8 +23,8 @@ const userSchema = new mongoose.Schema({
   mobileNumber: {
     type: Number,
     required: [false],
-    min: [1000000000],
-    max: [9999999999],
+    min: [1000000000,  "Please enter a valid 10 digit mobile number."],
+    max: [9999999999,  "Please enter a valid 10 digit mobile number."],
   },
   password: {
     type: String,
@@ -49,6 +49,10 @@ const userSchema = new mongoose.Schema({
   typeOfUser: {
     type: String,
     default: `user`,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,

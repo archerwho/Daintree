@@ -7,11 +7,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home.js";
 import ProductDetails from "./components/Product/ProductDetails";
 import Products from "./components/Product/Products.js";
-import history from "./components/layout/Header/history";
 import LoginRegister from "./components/User/LoginRegister";
-import store from "./store"
+import store from "./store";
 import { loadUser } from "./actions/userAction";
-import Profile from "./components/User/Profile.js"
+import UserProfile from "./components/User/UserProfile.js";
+import ProtectedRoute from "./components/Route/ProtectedRoute";
+import UpdateProfile from "./components/User/UpdateProfile.js"
 
 function App() {
   React.useEffect(() => {
@@ -20,10 +21,10 @@ function App() {
         families: ["Montserrat", "sans-serif"],
       },
     });
-    store.dispatch(loadUser())
+    store.dispatch(loadUser());
   });
   return (
-    <Router history={history}>
+    <Router>
       <Header />
       <div style={{ width: "100%", minHeight: "70vh" }}>
         <Routes>
@@ -32,7 +33,24 @@ function App() {
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/products/:keyword" element={<Products />} />
           <Route exaxt path="/login" element={<LoginRegister />} />
-          <Route exact path="/profile" element={<Profile />} />
+          <Route
+            exact
+            path="/profile"
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <UserProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            exact
+            path="/profile/update"
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <UpdateProfile />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </div>
       <Footer />

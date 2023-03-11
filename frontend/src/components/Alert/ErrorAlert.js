@@ -9,7 +9,7 @@ const ErrorAlert = (props) => {
   return (
     <Fragment>
       {props.error ? (
-        <Collapse in={open} sx={{ width: "100vmax" }}>
+        <Collapse in={open} sx={{ width: "50vmax" , m:"0 auto"}}>
           <Alert
             action={
               <IconButton

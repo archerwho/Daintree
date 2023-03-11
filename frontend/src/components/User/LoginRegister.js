@@ -39,6 +39,7 @@ const LoginRegister = () => {
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
+    // navigate(`/`)
   };
   const registerSubmit = (e) => {
     e.preventDefault();
@@ -49,6 +50,7 @@ const LoginRegister = () => {
     registerForm.set("password", password);
     registerForm.set("avatar", avatar);
     dispatch(register(registerForm))
+    // navigate(`/`)
   };
   const registerDataChange = (e) => {
     if (e.target.name === "avatar") {
