@@ -4,12 +4,13 @@ import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 
-const ErrorAlert = (props) => {
+const NewAlert = (props) => {
   const [open, setOpen] = React.useState(true);
+  
   return (
     <Fragment>
       {props.error ? (
-        <Collapse in={open} sx={{ width: "50vmax" , m:"0 auto"}}>
+        <Collapse in={open} sx={{ width: "50vmax", m: "0 auto" }}>
           <Alert
             action={
               <IconButton
@@ -24,7 +25,7 @@ const ErrorAlert = (props) => {
               </IconButton>
             }
             sx={{ mb: 2 }}
-            severity="error"
+            severity={props.type}
           >
             {props.error}
           </Alert>
@@ -34,4 +35,4 @@ const ErrorAlert = (props) => {
   );
 };
 
-export default ErrorAlert;
+export default NewAlert;

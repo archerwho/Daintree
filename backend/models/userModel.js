@@ -23,12 +23,13 @@ const userSchema = new mongoose.Schema({
   mobileNumber: {
     type: Number,
     required: [false],
-    min: [1000000000,  "Please enter a valid 10 digit mobile number."],
-    max: [9999999999,  "Please enter a valid 10 digit mobile number."],
+    min: [1000000000, "Please enter a valid 10 digit mobile number."],
+    max: [9999999999, "Please enter a valid 10 digit mobile number."],
   },
   password: {
     type: String,
     required: [true, `Please enter a Password.`],
+    minLength: [8, `Password must contain atleat 8 characters.`],
     maxLength: [15, `Password cannot contain more than 15 characters.`],
     select: [false],
   },
@@ -54,8 +55,8 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  resetPasswordToken: String,
-  resetPasswordExpire: Date,
+  resetPasswordToken: { type: String },
+  resetPasswordExpire: { type: Date },
 });
 
 //Hashing the password using bcryptjs
@@ -86,7 +87,6 @@ userSchema.methods.getResetPasswordToken = function () {
     .createHash(`sha256`)
     .update(resetToken)
     .digest(`hex`);
-
   this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
 
   return resetToken;

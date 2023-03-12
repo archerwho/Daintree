@@ -5,7 +5,7 @@ import "./Home.css";
 import ProductCard from "../Product/ProductCard";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
-import ErrorAlert from "../Alert/ErrorAlert";
+import NewAlert from "../Alert/NewAlert";
 import Loader from "../Loader/Loader";
 
 function Home() {
@@ -25,7 +25,7 @@ function Home() {
   return (
     <Fragment>
       {error ? (
-        <ErrorAlert error={error} />
+        <NewAlert error={error} />
       ) : (
         <Fragment>
           {loading ? (

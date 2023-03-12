@@ -7,9 +7,8 @@ import PersonIcon from "@mui/icons-material/Person";
 import defaultprofile from "../../images/defaultprofile.png";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
-import ErrorAlert from "../Alert/ErrorAlert";
+import NewAlert from "../Alert/NewAlert";
 import Loader from "../Loader/Loader";
-
 
 const LoginRegister = () => {
   document.title = "Login/Register | Daintree";
@@ -46,10 +45,10 @@ const LoginRegister = () => {
     const registerForm = new FormData();
     registerForm.set("firstName", firstName);
     registerForm.set("lastName", lastName);
-    registerForm.set("email", email)
+    registerForm.set("email", email);
     registerForm.set("password", password);
     registerForm.set("avatar", avatar);
-    dispatch(register(registerForm))
+    dispatch(register(registerForm));
     // navigate(`/`)
   };
   const registerDataChange = (e) => {
@@ -74,7 +73,7 @@ const LoginRegister = () => {
       }, 5000);
     }
     if (isAuthenticated) {
-      navigate(`/profile`);
+      navigate(`/`);
     }
   }, [dispatch, error, isAuthenticated, navigate]);
 
@@ -99,6 +98,10 @@ const LoginRegister = () => {
         <Loader />
       ) : (
         <Fragment>
+          <NewAlert type={"error"} error={error} />
+          {isAuthenticated ? (
+            <NewAlert type={"success"} error={"Login Successfull."} />
+          ) : null}
           <div className="LoginRegisterContainer">
             <div className="LoginRegisterBox">
               <div>
@@ -132,7 +135,6 @@ const LoginRegister = () => {
                 </div>
                 <a href="/password/forgot">Forgot Password?</a>
                 <input type="submit" value="Login" className="loginBtn" />
-                <ErrorAlert error={error} />
               </form>
               <form
                 className="registerForm"

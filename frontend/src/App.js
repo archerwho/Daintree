@@ -4,15 +4,19 @@ import Header from "./components/layout/Header/Header";
 import Webfont from "webfontloader";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/Home/Home.js";
+import Home from "./components/Home/Home";
 import ProductDetails from "./components/Product/ProductDetails";
-import Products from "./components/Product/Products.js";
+import Products from "./components/Product/Products";
 import LoginRegister from "./components/User/LoginRegister";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
-import UserProfile from "./components/User/UserProfile.js";
+import UserProfile from "./components/User/UserProfile";
 import ProtectedRoute from "./components/Route/ProtectedRoute";
-import UpdateProfile from "./components/User/UpdateProfile.js"
+import UpdateProfile from "./components/User/UpdateProfile";
+import UpdatePassword from "./components/User/UpdatePassword";
+import ForgotPassword from "./components/User/ForgotPassword";
+import ResetPassword from "./components/User/ResetPassword";
+import About from "./components/About/About.js"
 
 function App() {
   React.useEffect(() => {
@@ -51,6 +55,18 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            exact
+            path="/password/update"
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <UpdatePassword />
+              </ProtectedRoute>
+            }
+          />
+          <Route exaxt path="/password/forgot" element={<ForgotPassword />} />
+          <Route exaxt path="/password/reset/:token" element={<ResetPassword />} />
+          <Route exaxt path="/about" element={<About />} />
         </Routes>
       </div>
       <Footer />

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Loader/Loader";
 import ProductCard from "../Product/ProductCard";
 import "./Products.css";
-import ErrorAlert from "../Alert/ErrorAlert";
+import NewAlert from "../Alert/NewAlert";
 import { useParams } from "react-router-dom";
 import { Pagination } from "@mui/material";
 import Slider from "@mui/material/Slider";
@@ -74,7 +74,7 @@ const Products = () => {
         {loading ? (
           <Fragment>
             <Loader />
-            <ErrorAlert error={error} />
+            <NewAlert error={error} />
           </Fragment>
         ) : (
           <Fragment>

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { clearErrors, getProductDetails } from "../../actions/productAction";
 import Loader from "../Loader/Loader";
-import ErrorAlert from "../Alert/ErrorAlert";
+import NewAlert from "../Alert/NewAlert";
 import "./ProductDetails.css";
 import Carousel from "../Carousel/Carousel";
 import Stars from "../Rating/Stars";
@@ -30,7 +30,7 @@ const ProductDetails = () => {
         <Loader />
       ) : (
         <Fragment>
-          <ErrorAlert error={error} />
+          <NewAlert error={error} />
           <div className="ProductDetails">
             <div className="ProductImages">
               {product.images && <Carousel images={product.images} />}

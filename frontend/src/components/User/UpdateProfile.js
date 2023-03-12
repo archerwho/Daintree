@@ -6,7 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";
 // import defaultprofile from "../../images/defaultprofile.png";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loadUser, updateProfile } from "../../actions/userAction";
-import ErrorAlert from "../Alert/ErrorAlert";
+import NewAlert from "../Alert/NewAlert";
 import Loader from "../Loader/Loader";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
@@ -39,7 +39,6 @@ const UpdateProfile = () => {
     updateProfileForm.set("gender", gender);
     updateProfileForm.set("avatar", avatar);
     dispatch(updateProfile(updateProfileForm));
-    // navigate(`/profile`)
   };
   const updateProfileDataChange = (e) => {
     const reader = new FileReader();
@@ -74,7 +73,7 @@ const UpdateProfile = () => {
         <Loader />
       ) : (
         <Fragment>
-          <ErrorAlert error={error} />
+          <NewAlert error={error} />
           <div className="updateProfileContainer">
             <div className="updateProfileBox">
               <h2 className="updateProfileHeading">Update Profile</h2>
