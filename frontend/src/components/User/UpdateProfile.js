@@ -6,7 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";
 // import defaultprofile from "../../images/defaultprofile.png";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loadUser, updateProfile } from "../../actions/userAction";
-import NewAlert from "../Alert/NewAlert";
+import { useAlert } from "@blaumaus/react-alert";
 import Loader from "../Loader/Loader";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
@@ -15,6 +15,7 @@ const UpdateProfile = () => {
   document.title = "Update Profile | Daintree";
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const alert = useAlert();
 
   const { user } = useSelector((state) => state.user);
   const { error, isUpdated, loading } = useSelector((state) => state.profile);
@@ -53,11 +54,11 @@ const UpdateProfile = () => {
 
   useEffect(() => {
     if (error) {
-      setTimeout(() => {
-        dispatch(clearErrors());
-      }, 5000);
+      alert.error(error);
+      dispatch(clearErrors());
     }
     if (isUpdated) {
+      alert.success("Profile Updated Successfully");
       dispatch(loadUser());
       dispatch({
         type: UPDATE_PROFILE_RESET,
@@ -66,14 +67,13 @@ const UpdateProfile = () => {
         navigate(`/profile`);
       }, 500);
     }
-  }, [dispatch, error, isUpdated, navigate]);
+  }, [dispatch, error, isUpdated, navigate, alert]);
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          <NewAlert error={error} />
           <div className="updateProfileContainer">
             <div className="updateProfileBox">
               <h2 className="updateProfileHeading">Update Profile</h2>

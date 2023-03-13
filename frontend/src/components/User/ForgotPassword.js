@@ -2,13 +2,14 @@ import React, { Fragment, useState, useEffect } from "react";
 import "./ForgotPassword.css";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";
-import NewAlert from "../Alert/NewAlert";
+import { useAlert } from "@blaumaus/react-alert";
 import Loader from "../Loader/Loader";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 
 const ForgotPassword = () => {
   document.title = "Forgot Password | Daintree";
   const dispatch = useDispatch();
+  const alert = useAlert();
   const { error, loading, message } = useSelector(
     (state) => state.forgotPassword
   );
@@ -23,13 +24,12 @@ const ForgotPassword = () => {
 
   useEffect(() => {
     if (error) {
-      setTimeout(() => {
-        dispatch(clearErrors());
-      }, 5000);
+      alert.error(error);
+      dispatch(clearErrors());
     }
     if (message) {
     }
-  }, [dispatch, error, message]);
+  }, [dispatch, error, message, alert]);
 
   return (
     <Fragment>
@@ -37,7 +37,6 @@ const ForgotPassword = () => {
         <Loader />
       ) : (
         <Fragment>
-          <NewAlert error={error} />
           <div className="forgotPasswordContainer">
             <div className="forgotPasswordBox">
               <h2 className="forgotPasswordHeading">Forgot Password</h2>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Loader/Loader";
 import ProductCard from "../Product/ProductCard";
 import "./Products.css";
-import NewAlert from "../Alert/NewAlert";
+import {useAlert} from "@blaumaus/react-alert"
 import { useParams } from "react-router-dom";
 import { Pagination } from "@mui/material";
 import Slider from "@mui/material/Slider";
@@ -30,6 +30,7 @@ const categories = [
 const Products = () => {
   document.title = "Products | Daintree";
   const { keyword } = useParams();
+  const alert = useAlert()
 
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = React.useState([0, 300000]);
@@ -58,12 +59,12 @@ const Products = () => {
   };
   useEffect(() => {
     if (error) {
-      setTimeout(() => {
+      alert.error(error)
         dispatch(clearErrors());
-      }, 5000);
+      
     }
     dispatch(getProduct(keyword, currentPage, price, category, rating));
-  }, [dispatch, error, keyword, currentPage, price, category, rating]);
+  }, [dispatch, error, keyword, currentPage, price, category, rating, alert]);
 
   const setCurrentPageNo = (e) => {
     setCurrentPage(Number(e.target.innerText));
@@ -74,7 +75,6 @@ const Products = () => {
         {loading ? (
           <Fragment>
             <Loader />
-            <NewAlert error={error} />
           </Fragment>
         ) : (
           <Fragment>

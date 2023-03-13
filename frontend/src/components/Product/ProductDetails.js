@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { clearErrors, getProductDetails } from "../../actions/productAction";
 import Loader from "../Loader/Loader";
-import NewAlert from "../Alert/NewAlert";
+import {useAlert} from "@blaumaus/react-alert"
 import "./ProductDetails.css";
 import Carousel from "../Carousel/Carousel";
 import Stars from "../Rating/Stars";
@@ -13,15 +13,17 @@ import "./ReviewCard.css";
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const alert = useAlert()
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
   useEffect(() => {
     if (error) {
+      alert.error(error)
       dispatch(clearErrors());
     }
     dispatch(getProductDetails(id));
-  }, [dispatch, id, error]);
+  }, [dispatch, id, error, alert]);
   document.title = `${product.name} | Daintree`;
 
   return (
@@ -30,7 +32,6 @@ const ProductDetails = () => {
         <Loader />
       ) : (
         <Fragment>
-          <NewAlert error={error} />
           <div className="ProductDetails">
             <div className="ProductImages">
               {product.images && <Carousel images={product.images} />}

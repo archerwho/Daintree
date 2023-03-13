@@ -11,10 +11,12 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../../actions/userAction";
 import "./UserOptions.css";
 import { Box } from "@mui/material";
+import { useAlert } from "@blaumaus/react-alert";
 
 export function UserOptions(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const alert = useAlert()
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -43,6 +45,7 @@ export function UserOptions(props) {
   }
   function logoutUser() {
     dispatch(logout());
+    alert.success("Logout Successfull.")
     navigate(`/`)
   }
 

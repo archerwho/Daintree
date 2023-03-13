@@ -7,13 +7,14 @@ import PersonIcon from "@mui/icons-material/Person";
 import defaultprofile from "../../images/defaultprofile.png";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
-import NewAlert from "../Alert/NewAlert";
 import Loader from "../Loader/Loader";
+import {useAlert} from "@blaumaus/react-alert"
 
 const LoginRegister = () => {
   document.title = "Login/Register | Daintree";
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const alert = useAlert()
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
@@ -68,14 +69,14 @@ const LoginRegister = () => {
 
   useEffect(() => {
     if (error) {
-      setTimeout(() => {
-        dispatch(clearErrors());
-      }, 5000);
+      alert.error(error)
+      dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      navigate(`/`);
+      alert.success("Login Successfull")
+      navigate(`/`)
     }
-  }, [dispatch, error, isAuthenticated, navigate]);
+  }, [dispatch, error, isAuthenticated, navigate, alert]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
@@ -98,10 +99,6 @@ const LoginRegister = () => {
         <Loader />
       ) : (
         <Fragment>
-          <NewAlert type={"error"} error={error} />
-          {isAuthenticated ? (
-            <NewAlert type={"success"} error={"Login Successfull."} />
-          ) : null}
           <div className="LoginRegisterContainer">
             <div className="LoginRegisterBox">
               <div>

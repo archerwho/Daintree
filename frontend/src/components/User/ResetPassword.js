@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./ResetPassword.css";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, resetPassword } from "../../actions/userAction";
-import NewAlert from "../Alert/NewAlert";
+import { useAlert } from "@blaumaus/react-alert";
 import Loader from "../Loader/Loader";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import LockIcon from "@mui/icons-material/Lock";
@@ -11,6 +11,7 @@ import LockIcon from "@mui/icons-material/Lock";
 const ResetPassword = () => {
   document.title = "Reset Password | Daintree";
   const { token } = useParams();
+  const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -31,23 +32,22 @@ const ResetPassword = () => {
 
   useEffect(() => {
     if (error) {
-      setTimeout(() => {
-        dispatch(clearErrors());
-      }, 5000);
+      alert.error(error);
+      dispatch(clearErrors());
     }
     if (success) {
+      alert.success("Password Reset Successfull.");
       setTimeout(() => {
         navigate(`/login`);
       }, 500);
     }
-  }, [dispatch, error, success, navigate]);
+  }, [dispatch, error, success, navigate, alert]);
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          <NewAlert error={error} />
           <div className="resetPasswordContainer">
             <div className="resetPasswordBox">
               <h2 className="resetPasswordHeading">Reset Password</h2>

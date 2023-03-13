@@ -5,29 +5,27 @@ import "./Home.css";
 import ProductCard from "../Product/ProductCard";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
-import NewAlert from "../Alert/NewAlert";
+import {useAlert} from "@blaumaus/react-alert"
 import Loader from "../Loader/Loader";
 
 function Home() {
   document.title = "Daintree | Online Store";
   const dispatch = useDispatch();
+  const alert = useAlert()
   const { loading, error, products } = useSelector(
     //, productsCount
     (state) => state.products
   );
   useEffect(() => {
     if (error) {
+      alert.error(error)
       dispatch(clearErrors());
     }
     dispatch(getProduct());
-  }, [dispatch, error]);
+  }, [dispatch, error, alert]);
 
   return (
     <Fragment>
-      {error ? (
-        <NewAlert error={error} />
-      ) : (
-        <Fragment>
           {loading ? (
             <Loader />
           ) : (
@@ -55,8 +53,6 @@ function Home() {
             </Fragment>
           )}
         </Fragment>
-      )}
-    </Fragment>
   );
 }
 

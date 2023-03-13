@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./UpdatePassword.css";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updatePassword } from "../../actions/userAction";
-import NewAlert from "../Alert/NewAlert";
+import {useAlert} from "@blaumaus/react-alert"
 import Loader from "../Loader/Loader";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
@@ -14,6 +14,7 @@ const UpdatePassword = () => {
   document.title = "Update Password | Daintree";
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const alert = useAlert()
 
   const { error, isUpdated, loading } = useSelector((state) => state.profile);
 
@@ -32,11 +33,13 @@ const UpdatePassword = () => {
 
   useEffect(() => {
     if (error) {
-      setTimeout(() => {
+      alert.error(error)
+
         dispatch(clearErrors());
-      }, 5000);
+      
     }
     if (isUpdated) {
+      alert.success("Password Updated Successfully.")
       dispatch({
         type: UPDATE_PASSWORD_RESET,
       });
@@ -44,14 +47,13 @@ const UpdatePassword = () => {
         navigate(`/profile`);
       }, 500);
     }
-  }, [dispatch, error, isUpdated, navigate]);
+  }, [dispatch, error, isUpdated, navigate, alert]);
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          <NewAlert error={error} />
           <div className="updatePasswordContainer">
             <div className="updatePasswordBox">
               <h2 className="updatePasswordHeading">Update Password</h2>
