@@ -11,7 +11,7 @@ const Stars = (props) => {
           sx={{
             flexGrow: 0,
             display: { xs: "flex", md: "none" },
-            color: "#e26d5c",
+            color: "#CB997E",
           }}
           name="half-rating-read"
           value={props.stars}
@@ -32,7 +32,7 @@ const Stars = (props) => {
           readOnly
           size="medium"
           sx={{
-            color: "#e26d5c",
+            color: "#CB997E",
             flexGrow: 0,
             display: { xs: "none", md: "flex" },
           }}

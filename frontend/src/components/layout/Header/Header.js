@@ -2,7 +2,7 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
-import Cart from "./cart";
+import CartIcon from "./cartIcon";
 import Profile from "./profile";
 import { SearchBar, SearchBarMini } from "./search";
 import { MenuBig, MenuMini } from "./menu";
@@ -24,7 +24,7 @@ function Header() {
           <MenuBig />
           <SearchBar />
           <SearchBarMini />
-          <Cart />
+          <CartIcon />
           {isAuthenticated ? <UserOptions user={user}/> : <Profile />}
         </Toolbar>
       </Container>

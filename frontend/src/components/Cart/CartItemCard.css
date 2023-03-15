@@ -1,0 +1,65 @@
+.CartItemCard {
+  display: flex;
+  padding: 1vmax;
+  height: 8vmax;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+.CartItemCard > img {
+  width: 5vmax;
+}
+
+.CartItemCard > div {
+  display: flex;
+  margin: 0.3vmax 1vmax;
+  flex-direction: column;
+}
+
+.CartItemCard > div > p:first-child {
+  font: 600 1vmax "Montserrat";
+  color: rgb(221, 190, 169);
+  text-decoration: none;
+}
+.CartItemCard > div > p:first-child:hover {
+  color: #cb997e;
+}
+
+.CartItemCard > div > span {
+  font: 600 1vmax "Montserrat";
+  color: rgb(221, 190, 169);
+}
+
+.CartItemCard > div > p {
+  color: #cb997e;
+  font: 100 0.8vmax "Montserrat";
+  cursor: pointer;
+}
+.CartItemCard > div > p:hover {
+  color: #ddbea9;
+}
+
+@media screen and (max-width: 600px) {
+  .CartItemCard {
+    padding: 3vmax;
+    height: 25vmax;
+  }
+  .CartItemCard > img {
+    width: 10vmax;
+  }
+
+  .CartItemCard > div {
+    margin: 1vmax 2vmax;
+  }
+
+  .CartItemCard > div > a {
+    font: 300 2vmax "Montserrat";
+  }
+
+  .CartItemCard > div > span {
+    font: 300 1.9vmax "Montserrat";
+  }
+
+  .CartItemCard > div > p {
+    font: 100 1.8vmax "Montserrat";
+  }
+}

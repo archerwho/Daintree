@@ -19,7 +19,7 @@ const Review = (props) => {
           precision={0.5}
           readOnly
           size="medium"
-          sx={{ color: "#e26d5c" }}
+          sx={{ color: "#cb997e" }}
         />
       </div>
       <div style={{ textJustify: "inter-word" }}>

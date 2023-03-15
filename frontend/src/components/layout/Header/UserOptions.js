@@ -16,7 +16,7 @@ import { useAlert } from "@blaumaus/react-alert";
 export function UserOptions(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const alert = useAlert()
+  const alert = useAlert();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -45,13 +45,13 @@ export function UserOptions(props) {
   }
   function logoutUser() {
     dispatch(logout());
-    alert.success("Logout Successfull.")
-    navigate(`/`)
+    alert.success("Logout Successfull.");
+    navigate(`/`);
   }
 
   return (
-    <Box sx={{ flexGrow: 0, height: "46px"}}>
-      <SpeedDial 
+    <Box sx={{ flexGrow: 0, height: "46px" }}>
+      <SpeedDial
         ariaLabel="SpeedDial tooltip example"
         icon={
           <img
@@ -65,7 +65,6 @@ export function UserOptions(props) {
         open={open}
         direction="down"
         className="speedDial"
-       
       >
         {actions.map((action) => (
           <SpeedDialAction
@@ -73,6 +72,7 @@ export function UserOptions(props) {
             icon={action.icon}
             tooltipTitle={action.name}
             onClick={action.function}
+            tooltipOpen={window.innerWidth <= 600 ? true : false}
           />
         ))}
       </SpeedDial>

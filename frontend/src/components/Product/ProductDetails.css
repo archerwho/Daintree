@@ -49,15 +49,23 @@
 }
 .DetailsBlock-3-1-1 > button {
   border: 1px solid rgba(183, 183, 164, 0.5);
-  background-color: #eee;
+  background-color: #cb997e;
   padding: 0.5vmax;
   cursor: pointer;
-  color: #cb997e;
+  color: #ffe8d6;
   font: 500 1vmax "Montserrat";
   transition: all 0.5s;
 }
+.DetailsBlock-3-1-1 > button:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.DetailsBlock-3-1-1 > button:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 .DetailsBlock-3-1-1 > button:hover {
-  background-color: #b7b7a4;
+  background-color: #DDBEA9;
 }
 .DetailsBlock-3-1-1 > input {
   background-color: #eee;

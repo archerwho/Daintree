@@ -16,7 +16,9 @@ import UpdateProfile from "./components/User/UpdateProfile";
 import UpdatePassword from "./components/User/UpdatePassword";
 import ForgotPassword from "./components/User/ForgotPassword";
 import ResetPassword from "./components/User/ResetPassword";
-import About from "./components/About/About.js"
+import About from "./components/About/About.js";
+import { clearErrors } from "./actions/productAction";
+import Cart from "./components/Cart/Cart"
 
 function App() {
   React.useEffect(() => {
@@ -26,6 +28,9 @@ function App() {
       },
     });
     store.dispatch(loadUser());
+    setTimeout(() => {
+      store.dispatch(clearErrors());
+    }, 3000);
   });
   return (
     <Router>
@@ -65,7 +70,12 @@ function App() {
             }
           />
           <Route exaxt path="/password/forgot" element={<ForgotPassword />} />
-          <Route exaxt path="/password/reset/:token" element={<ResetPassword />} />
+          <Route
+            exaxt
+            path="/password/reset/:token"
+            element={<ResetPassword />}
+          />
+          <Route exaxt path="/cart" element={<Cart />} />
           <Route exaxt path="/about" element={<About />} />
         </Routes>
       </div>

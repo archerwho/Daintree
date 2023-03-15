@@ -14,6 +14,7 @@ import {
   profileReducer,
   userReducer,
 } from "./reducers/userReducer";
+import { cartReducer } from "./reducers/cartReducer";
 
 const reducer = combineReducers({
   products: productReducer,
@@ -21,15 +22,13 @@ const reducer = combineReducers({
   user: userReducer,
   profile: profileReducer,
   forgotPassword: forgotPasswordReducer,
+  cart: cartReducer,
 });
-
-let initialState = {};
 
 const middleware = [thunk];
 
 const store = configureStore(
   { reducer: reducer },
-  initialState,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 

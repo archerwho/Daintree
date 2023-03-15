@@ -1,0 +1,200 @@
+.emptyCart {
+  margin: auto;
+  text-align: center;
+  padding: 10vmax;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.emptyCart > svg {
+  font-size: 5vmax;
+  color: #cb997e;
+}
+.emptyCart > p {
+  font-size: 2vmax;
+}
+.emptyCart > p:last-child {
+  background-color: #CB997E;
+  color: #ffe8d6;
+  border: none;
+  border-radius: 5px;
+  padding: 1vmax 3vmax;
+  cursor: pointer;
+  font: 400 1vmax "Montserrat";
+  text-decoration: none;
+}
+
+.cartPage {
+  padding: 5vmax;
+}
+
+.cartHeader {
+  background-color: #cb997e;
+  width: 90%;
+  box-sizing: border-box;
+  margin: auto;
+  color: #ffe8d6;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  font: 300 1.2vmax "Montserrat";
+}
+.cartHeader > p {
+  margin: 10px;
+}
+.cartHeader > p:nth-child(2) {
+  text-align: center;
+}
+.cartHeader > p:last-child {
+  text-align: end;
+}
+
+.cartContainer {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+}
+
+.cartInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8vmax;
+}
+
+.cartInput > button {
+  border: 1px solid rgba(183, 183, 164, 0.5);
+  background-color: #cb997e;
+  padding: 0.5vmax;
+  cursor: pointer;
+  color: #ffe8d6;
+  font: 500 1vmax "Montserrat";
+  transition: all 0.5s;
+}
+.cartInput > button:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.cartInput > button:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.cartInput > button:hover {
+  background-color: #ddbea9;
+}
+
+.cartInput > input {
+  background-color: #eee;
+  border: 1px solid rgb(183, 183, 164, 0.5);
+  padding: 0.5vmax;
+  width: 1vmax;
+  text-align: center;
+  outline: none;
+  font: 500 1vmax "Montserrat";
+  color: #cb997e;
+}
+
+.cartSubtotal {
+  display: flex;
+  padding: 0.5vmax;
+  height: 8vmax;
+  align-items: center;
+  box-sizing: border-box;
+  font: 300 1vmax "Montserrat";
+  justify-content: flex-end;
+  color: #cb997e;
+}
+
+.cartGrossTotal {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+}
+
+.cartGrossTotalBox {
+  border-top: 3px solid #cb997e;
+  margin: 1vmax 4vmax;
+  box-sizing: border-box;
+  padding: 2vmax 0.8vmax 2vmax 0;
+  font: 300 1vmax "Montserrat";
+  display: flex;
+  justify-content: space-between;
+  color: #CB997E;
+}
+
+.checkOutBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+.checkOutBtn > button {
+  background-color: #cb997e;
+  color: white;
+  border: none;
+  padding: 0.8vmax 4vmax;
+  width: 50%;
+  font: 300 1.2vmax "Montserrat";
+  margin: 1vmax 4vmax;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+.checkOutBtn> button:hover {
+  background-color: #ddbea9;
+}
+
+@media screen and (max-width: 600px) {
+  .cartPage {
+    padding: 0;
+    min-height: 60vh;
+  }
+
+  .cartHeader {
+    margin-top: 1vmax;
+    width: 100%;
+    font: 300 1.7vmax "Montserrat";
+    grid-template-columns: 3fr 1fr 1fr;
+  }
+
+  .cartContainer {
+    width: 100%;
+    grid-template-columns: 3fr 1fr 1fr;
+  }
+
+  .cartInput {
+    height: 20vmax;
+  }
+
+  .cartInput > button {
+    padding: 1.5vmax;
+    font: 400 1.8vmax "Montserrat";
+  }
+
+  .cartInput > input {
+    width: 2vmax;
+    padding: 1.5vmax;
+    font: 400 1.8vmax "Montserrat";
+  }
+
+  .cartSubtotal {
+    padding: 1.5vmax;
+    height: 20vmax;
+    font: 300 2vmax "Montserrat";
+  }
+
+  .cartGrossTotal {
+    display: grid;
+    grid-template-columns: 0fr 2fr;
+  }
+
+  .cartGrossTotalBox {
+    padding: 2vmax;
+    font: 300 2vmax "Montserrat";
+  }
+
+  .checkOutBtn > button {
+    padding: 2vmax 4vmax;
+    width: 100%;
+    font: 300 2vmax "Montserrat";
+  }
+}
