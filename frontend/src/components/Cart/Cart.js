@@ -27,6 +27,10 @@ const Cart = () => {
     dispatch(removeItemsFromCart(id));
   };
 
+  const checkoutHandler = () => {
+    navigate(`/login?redirect=shipping`)
+  }
+
   return (
     <Fragment>
       {cartItems.length === 0 ? (
@@ -84,7 +88,7 @@ const Cart = () => {
               </div>
               <div></div>
               <div className="checkOutBtn">
-                <button>Check Out</button>
+                <button onClick={checkoutHandler}>Check Out</button>
               </div>
             </div>
           </div>

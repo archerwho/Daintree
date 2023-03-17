@@ -1,0 +1,79 @@
+.myOrdersPage {
+  width: 100vw;
+  max-width: 100%;
+  padding: 0 7vmax;
+  box-sizing: border-box;
+  background-color: #eee;
+  position: relative;
+  top: 5vmax;
+  left: 0;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+#myOrdersHeading {
+  text-align: left;
+  font: 400 3vmax "Montserrat";
+  padding: 0.5vmax;
+  margin-bottom: 1vmax;
+  box-sizing: border-box;
+  color: #cb997e;
+  transition: all 0.5s;
+}
+
+.myOrdersTable {
+  background-color: #eee;
+}
+
+.myOrdersTable div {
+  font: 300 1vmax "Montserrat";
+  border: none;
+}
+
+.myOrdersTable svg {
+  color: #cb997e;
+  transition: all 0.5s;
+}
+
+.myOrdersTable svg:hover {
+  color: #ddbea9;
+}
+
+.MuiDataGrid-columnHeader {
+  background-color: #cb997e;
+  padding: 1vmax !important;
+}
+
+.MuiDataGrid-columnHeader div {
+  color: #ffe8d6;
+  font: 500 1.3vmax "Montserrat" !important;
+}
+
+.MuiDataGrid-iconSeparator {
+  display: none !important;
+}
+
+@media screen and (max-width: 600px) {
+  .myOrdersPage {
+    padding: 0;
+    height: 93vh;
+  }
+
+  #myOrdersHeading {
+    font: 400 2.2vmax "Montserrat";
+    padding: 4vw;
+  }
+
+  .myOrdersTable div {
+    font: 300 4vw "Montserrat";
+  }
+
+  .MuiDataGrid-columnHeader {
+    padding: 20px !important;
+  }
+
+  .MuiDataGrid-columnHeader div {
+    font: 500 5vw "Montserrat" !important;
+  }
+}

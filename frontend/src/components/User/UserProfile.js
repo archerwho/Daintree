@@ -60,7 +60,7 @@ const Profile = () => {
               </div>
               <div>
                 <p
-                  onClick={() => navigate(`/orders`)}
+                  onClick={() => navigate(`/orders/myorders`)}
                   style={{ cursor: "pointer" }}
                 >
                   My Orders

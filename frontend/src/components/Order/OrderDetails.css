@@ -1,0 +1,162 @@
+.orderDetailsPage {
+  width: 90%;
+  background-color: #eee;
+  border: 1px solid #b7b7a4;
+  margin: 2vmax auto;
+  padding: 0;
+}
+
+.orderDetailsContainer > h1 {
+  font: 600 3vmax "Montserrat";
+  margin: 0 0 2vmax 0;
+  color: #cb997e;
+}
+
+.orderDetailsContainer {
+  padding: 3vmax 5vmax;
+  padding-bottom: 0%;
+}
+
+.orderDetailsContainer > p {
+  font: 400 1.8vmax "Montserrat";
+  color: #cb997e;
+}
+
+.orderDetailsContainerBox,
+.orderDetailsCartItemsContainer {
+  margin: 2vmax;
+}
+
+.orderDetailsContainerBox > div {
+  display: flex;
+  margin: 1vmax 0;
+}
+
+.orderDetailsContainerBox > div > p {
+  font: 600 1vmax "Montserrat";
+  width: 8vmax;
+  color: #cb997e;
+}
+.orderDetailsContainerBox > div > span {
+  margin: 0 1vmax;
+  padding-left: 2vmax;
+  font: 600 1vmax "Montserrat";
+  color: #DDBEA9;
+}
+
+.orderDetailsCartItems > p {
+  font: 400 1.8vmax "Montserrat";
+  color: #cb997e;
+}
+
+.orderDetailsCartItems {
+  padding: 2vmax 5vmax;
+  border-top: 1px solid rgba(0, 0, 0, 0.164);
+}
+
+.cartPage3 {
+  padding: 1vmax;
+  margin-top: 0.5vmax;
+}
+
+.cartHeader3 {
+  background-color: #cb997e;
+  width: 100%;
+  box-sizing: border-box;
+  margin: auto;
+  color: #ffe8d6;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  font: 300 1.2vmax "Montserrat";
+}
+.cartHeader3 > p {
+  margin: 10px;
+}
+.cartHeader3 > p:nth-child(2) {
+  text-align: center;
+}
+.cartHeader3 > p:last-child {
+  text-align: end;
+}
+
+.cartContainer3 {
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+}
+
+.cartInput3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8vmax;
+}
+
+.cartInput3 > input {
+  background-color: #eee;
+  border: none;
+  padding: 0.5vmax;
+  width: 1vmax;
+  text-align: center;
+  outline: none;
+  font: 500 1vmax "Montserrat";
+  color: #cb997e;
+}
+
+.cartSubtotal3 {
+  display: flex;
+  padding: 0.5vmax;
+  height: 8vmax;
+  align-items: center;
+  box-sizing: border-box;
+  font: 300 1vmax "Montserrat";
+  justify-content: flex-end;
+  color: #cb997e;
+}
+
+@media screen and (max-width: 600px) {
+  .orderDetailsContainer > h1 {
+    font: 400 5vw "Montserrat";
+  }
+  .orderDetailsContainer > p {
+    font: 400 6vw "Montserrat";
+  }
+
+  .orderDetailsContainerBox > div {
+    margin: 6vw 0;
+  }
+
+  .orderDetailsContainerBox > div > p {
+    font: 400 4vw "Montserrat";
+  }
+  .orderDetailsContainerBox > div > span {
+    font: 100 4vw "Montserrat";
+  }
+
+  .orderDetailsCartItems > p {
+    font: 400 6vw "Montserrat";
+  }
+
+  .orderDetailsCartItemsContainer > div {
+    font: 400 4vw "Montserrat";
+    margin: 4vw 0;
+  }
+
+  .orderDetailsCartItemsContainer > div > img {
+    width: 10vw;
+  }
+
+  .orderDetailsCartItemsContainer > div > a {
+    margin: 2vw;
+    width: 30%;
+  }
+
+  .orderDetailsCartItemsContainer > div > span {
+    font: 100 4vw "Montserrat";
+  }
+  
+  .CartItemCard > img {
+    width: 5vmax;
+  }
+}

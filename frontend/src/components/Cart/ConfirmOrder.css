@@ -1,0 +1,304 @@
+.confirmOrderPage {
+  height: fit-content;
+  background-color: #eee;
+  display: grid;
+  grid-template-columns: 6fr 3fr;
+}
+
+.confirmOrderPage > div:last-child {
+  border-left: 1px solid rgba(0, 0, 0, 0.247);
+}
+
+.confirmshippingArea {
+  padding: 5vmax;
+  padding-bottom: 0%;
+}
+
+.confirmshippingArea > p {
+  font: 400 1.8vmax "Montserrat";
+  color: #cb997e;
+}
+
+.confirmshippingAreaBox,
+.confirmCartItemsContainer {
+  margin: 2vmax;
+}
+
+.confirmshippingAreaBox > div {
+  display: flex;
+  margin: 1vmax 0;
+}
+
+.confirmshippingAreaBox > div > p {
+  font: 400 1vmax "Montserrat";
+  width: 8vmax;
+  color: #6b705c;
+}
+.confirmshippingAreaBox > div > span {
+  margin: 0 2vmax;
+  padding: 0 0 0 1vmax;
+  font: 100 1vmax "Montserrat";
+  color: #b7b7a4;
+}
+
+.confirmCartItems > p {
+  font: 400 1.8vmax "Montserrat";
+  color: #cb997e;
+}
+
+.confirmCartItems {
+  padding: 5vmax;
+  padding-top: 2vmax;
+}
+
+.confirmCartItemsContainer {
+  max-height: 20vmax;
+  overflow-y: auto;
+}
+
+.confirmCartItemsContainer > div {
+  display: flex;
+  font: 400 1vmax "Montserrat";
+  align-items: center;
+  justify-content: space-between;
+  margin: 2vmax 0;
+}
+
+.confirmCartItemsContainer > div > img {
+  width: 4vmax;
+}
+
+.confirmCartItemsContainer > div > a {
+  color: #6b705c;
+  margin: 0 2vmax;
+  width: 60%;
+  text-decoration: none;
+}
+
+.confirmCartItemsContainer > div > span {
+  font: 100 1vmax "Montserrat";
+  color: #5e5e5e;
+}
+.cartPage2 {
+  padding: 1vmax;
+  margin-top: 0.5vmax;
+}
+
+.cartHeader2 {
+  background-color: #cb997e;
+  width: 90%;
+  box-sizing: border-box;
+  margin: auto;
+  color: #ffe8d6;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  font: 300 1.2vmax "Montserrat";
+}
+.cartHeader2 > p {
+  margin: 10px;
+}
+.cartHeader2 > p:nth-child(2) {
+  text-align: center;
+}
+.cartHeader2 > p:last-child {
+  text-align: end;
+}
+
+.cartContainer2 {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+}
+
+.cartInput2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8vmax;
+}
+
+.cartInput2 > input {
+  background-color: #eee;
+  border: none;
+  padding: 0.5vmax;
+  width: 1vmax;
+  text-align: center;
+  outline: none;
+  font: 500 1vmax "Montserrat";
+  color: #cb997e;
+}
+
+.cartSubtotal2 {
+  display: flex;
+  padding: 0.5vmax;
+  height: 8vmax;
+  align-items: center;
+  box-sizing: border-box;
+  font: 300 1vmax "Montserrat";
+  justify-content: flex-end;
+  color: #cb997e;
+}
+
+.cartGrossTotal2 {
+  display: grid;
+  width: 90%;
+  margin: 0 auto;
+  grid-template-columns: 2fr 3fr;
+}
+
+.cartGrossTotalBox2 {
+  border-top: 1px solid #b7b7a4;
+  margin: 1vmax 0;
+  box-sizing: border-box;
+  padding: 2vmax 0.5vmax 2vmax 0;
+  font: 300 1vmax "Montserrat";
+  display: flex;
+  justify-content: space-between;
+  color: #cb997e;
+}
+
+.orderSummary {
+  padding: 7vmax;
+}
+
+.orderSummary > p {
+  text-align: center;
+  font: 400 1.8vmax "Montserrat";
+  border-bottom: 1px solid rgba(0, 0, 0, 0.267);
+  padding: 1vmax;
+  width: 100%;
+  margin: auto;
+  color: #cb997e;
+  box-sizing: border-box;
+}
+
+.orderSummary > div > div {
+  display: flex;
+  font: 300 1vmax "Montserrat";
+  justify-content: space-between;
+  margin: 2vmax 0;
+}
+.orderSummary > div > div > p {
+  color: #6b705c;
+}
+.orderSummary > div > div > span {
+  color: #b7b7a4;
+}
+
+.orderSummaryTotal {
+  display: flex;
+  font: 300 1vmax "Montserrat";
+  color: #cb997e;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.363);
+  padding: 2vmax 0;
+}
+
+.orderSummary > button {
+  background-color: #cb997e;
+  color: white;
+  width: 100%;
+  padding: 1vmax;
+  border: none;
+  border-radius: 5px;
+  margin: auto;
+  cursor: pointer;
+  transition: 0.5s;
+  font: 400 1vmax "Montserrat";
+}
+
+.orderSummary > button:hover {
+  background-color: #ddbea9;
+}
+
+@media screen and (max-width: 600px) {
+  .confirmOrderPage {
+    grid-template-columns: 1fr;
+    height: unset;
+  }
+
+  .confirmOrderPage > div:last-child {
+    border-left: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.247);
+  }
+
+  .confirmshippingArea > p {
+    font: 400 6vw "Montserrat";
+  }
+
+  .confirmshippingAreaBox > div {
+    display: flex;
+    margin: 6vw 0;
+  }
+
+  .confirmshippingAreaBox > div > p {
+    font: 400 4vw "Montserrat";
+  }
+  .confirmshippingAreaBox > div > span {
+    font: 100 4vw "Montserrat";
+    margin: 0 0 0 8vmax;
+  }
+
+  .confirmCartItems > p {
+    font: 400 6vw "Montserrat";
+  }
+
+  .confirmCartItemsContainer {
+    max-height: 50vw;
+  }
+
+  .confirmCartItemsContainer > div {
+    font: 400 4vw "Montserrat";
+    margin: 4vw 0;
+  }
+
+  .confirmCartItemsContainer > div > img {
+    width: 10vw;
+  }
+
+  .confirmCartItemsContainer > div > a {
+    margin: 0;
+    width: 30%;
+  }
+
+  .confirmCartItemsContainer > div > span {
+    font: 100 4vw "Montserrat";
+  }
+  .cartInput2 > input {
+    font: 500 2vmax "Montserrat";
+  }
+  .cartSubtotal2 {
+    font: 300 2vmax "Montserrat";
+  }
+  .cartGrossTotalBox2 {
+    font: 300 2vmax "Montserrat";
+  }
+  .cartHeader2 {
+    font: 300 2vmax "Montserrat";
+  }
+
+  .orderSummary {
+    padding: 12vw;
+  }
+
+  .orderSummary > p {
+    font: 400 6vw "Montserrat";
+    padding: 4vw;
+  }
+
+  .orderSummary > div > div {
+    font: 300 4vw "Montserrat";
+  }
+
+  .orderSummaryTotal {
+    font: 300 4vw "Montserrat";
+    padding: 5vw 0;
+  }
+
+  .orderSummary > button {
+    padding: 4vw;
+    margin: 4vw auto;
+    font: 400 4vw "Montserrat";
+  }
+}

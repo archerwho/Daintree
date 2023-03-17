@@ -10,7 +10,9 @@ const CartItemCard = ({ item, deleteCartItems }) => {
       <div>
         <p onClick={() => navigate(`/product/${item.product}`)}>{item.name}</p>
         <span>{`Price: ₹ ${item.price}`}</span>
-        <p onClick={() => deleteCartItems(item.product)}>Remove</p>
+        {deleteCartItems && (
+          <p onClick={() => deleteCartItems(item.product)}>Remove</p>
+        )}
       </div>
     </div>
   );

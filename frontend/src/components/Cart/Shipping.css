@@ -1,0 +1,112 @@
+.shippingContainer {
+  width: 100vw;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.shippingBox {
+  background-color: #eee;
+  width: 25vw;
+  height: 90vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.shippingHeading {
+  text-align: center;
+  color: #cb997e;
+  font: 400 1.3vmax "Montserrat";
+  padding: 1.3vmax 1.3vmax 0.8vmax 1.3vmax;
+  border-bottom: 1px solid rgba(203, 153, 126, 0.8);
+  width: 50%;
+  margin: auto;
+}
+
+.shippingForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 2vmax;
+  justify-content: space-evenly;
+  height: 80%;
+  transition: all 0.5s;
+}
+
+.shippingForm > div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.shippingForm > div > input,
+.shippingForm > div > select {
+  padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(203, 153, 126, 0.3);
+  border-radius: 4px;
+  font: 300 0.9vmax "Montserrat";
+  outline: none;
+}
+
+.shippingForm > div > svg {
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: rgba(203, 153, 126, 0.6);
+}
+
+.shippingBtn {
+  border: none;
+  background-color: #cb997e;
+  color: #ffe8d6;
+  font: 300 1vmax "Montserrat";
+  border-radius: 5px;
+  width: 100%;
+  padding: 1vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+  outline: none;
+  margin: 2vmax;
+}
+
+.shippingBtn:hover {
+  background-color: #ddbea9;
+}
+
+@media screen and (max-width: 600px) {
+  .shippingBox {
+    width: 100vw;
+    height: 95vh;
+  }
+
+  .shippingHeading {
+    font: 400 6vw "Montserrat";
+    padding: 5vw;
+  }
+
+  .shippingForm {
+    padding: 11vw;
+  }
+
+  .shippingForm > div > input,
+  .shippingForm > div > select {
+    padding: 5vw 10vw;
+    font: 300 4vw "Montserrat";
+  }
+
+  .shippingForm > div > svg {
+    font-size: 6vw;
+    transform: translateX(3vw);
+  }
+
+  .shippingBtn {
+    font: 300 4vw "Montserrat";
+    padding: 4vw;
+  }
+}

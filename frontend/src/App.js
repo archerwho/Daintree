@@ -18,9 +18,23 @@ import ForgotPassword from "./components/User/ForgotPassword";
 import ResetPassword from "./components/User/ResetPassword";
 import About from "./components/About/About.js";
 import { clearErrors } from "./actions/productAction";
-import Cart from "./components/Cart/Cart"
+import Cart from "./components/Cart/Cart";
+import Shipping from "./components/Cart/Shipping";
+import ConfirmOrder from "./components/Cart/ConfirmOrder";
+import Payment from "./components/Cart/Payment";
+import axios from "axios";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import OrderSuccess from "./components/Cart/OrderSuccess";
+import AllOrders from "./components/Order/MyOrders";
+import OrderDetails from "./components/Order/OrderDetails";
 
 function App() {
+  const [stripeApiKey, setStripeApiKey] = React.useState("");
+  async function getStripeApiKey() {
+    const { data } = await axios.get(`/api/v1/stripeapikey`);
+    setStripeApiKey(data.stripeApiKey);
+  }
   React.useEffect(() => {
     Webfont.load({
       google: {
@@ -31,6 +45,7 @@ function App() {
     setTimeout(() => {
       store.dispatch(clearErrors());
     }, 3000);
+    getStripeApiKey();
   });
   return (
     <Router>
@@ -77,6 +92,64 @@ function App() {
           />
           <Route exaxt path="/cart" element={<Cart />} />
           <Route exaxt path="/about" element={<About />} />
+          <Route
+            exact
+            path="/shipping"
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <Shipping />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            exact
+            path="/order/confirm"
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <ConfirmOrder />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            exact
+            path="/process/payment"
+            element={
+              stripeApiKey && (
+                <ProtectedRoute redirectTo="/login">
+                  <Elements stripe={loadStripe(stripeApiKey)}>
+                    <Payment />
+                  </Elements>
+                </ProtectedRoute>
+              )
+            }
+          />
+          <Route
+            exact
+            path="/success"
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <OrderSuccess />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            exact
+            path="/orders/myorders"
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <AllOrders />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            exact
+            path="/order/:id"
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <OrderDetails />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </div>
       <Footer />

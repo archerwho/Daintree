@@ -8,13 +8,13 @@ import defaultprofile from "../../images/defaultprofile.png";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import Loader from "../Loader/Loader";
-import {useAlert} from "@blaumaus/react-alert"
+import { useAlert } from "@blaumaus/react-alert";
 
 const LoginRegister = () => {
   document.title = "Login/Register | Daintree";
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert()
+  const alert = useAlert();
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
@@ -39,7 +39,6 @@ const LoginRegister = () => {
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
-    // navigate(`/`)
   };
   const registerSubmit = (e) => {
     e.preventDefault();
@@ -67,16 +66,20 @@ const LoginRegister = () => {
     }
   };
 
+  const redirect = window.location.search
+    ? `/${window.location.search.split(`=`)[1]}`
+    : `/profile`;
+
   useEffect(() => {
     if (error) {
-      alert.error(error)
+      alert.error(error);
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      alert.success("Login Successfull")
-      navigate(`/`)
+      // alert.success("Login Successfull");
+      navigate(redirect);
     }
-  }, [dispatch, error, isAuthenticated, navigate, alert]);
+  }, [dispatch, error, isAuthenticated, navigate, alert, redirect]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

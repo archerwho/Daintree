@@ -42,7 +42,6 @@ const Products = () => {
     products,
     loading,
     error,
-    // productsCount,
     resultsPerPage,
     filteredProductsCount,
   } = useSelector((state) => state.products);

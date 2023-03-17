@@ -1,0 +1,48 @@
+.orderSuccess {
+  margin: auto;
+  text-align: center;
+  padding: 10vmax;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.orderSuccess > svg {
+  font-size: 7vmax;
+  color: #cb997e;
+}
+.orderSuccess > p {
+  font-size: 2vmax;
+  color: #cb997e;
+}
+.orderSuccess > p:last-child {
+  background-color: #cb997e;
+  color: #ffe8d6;
+  border: none;
+  padding: 1vmax 3vmax;
+  border-radius: 5px;
+  cursor: pointer;
+  font: 400 1vmax "Montserrat";
+  text-decoration: none;
+  margin: 2vmax;
+}
+.orderSuccess > p:last-child:hover {
+  background-color: #ddbea9;
+}
+
+@media screen and (max-width: 600px) {
+  .orderSuccess > a {
+    padding: 3vw 6vw;
+    font: 400 4vw "Montserrat";
+    margin: 2vmax;
+  }
+
+  .orderSuccess > svg {
+    font-size: 20vw;
+  }
+  .orderSuccess > p {
+    margin: 2vmax;
+    font-size: 5vw;
+  }
+}
