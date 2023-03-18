@@ -43,6 +43,15 @@
   font: 600 1.8vmax "Montserrat";
   margin: 1vamx 0;
 }
+.DetailsBlock-3 > h1 > span {
+  color: #cb997e;
+  font: 600 0.9vmax "Montserrat";
+  margin: 1vamx 0;
+}
+.DetailsBlock-3 > h1 > span:last-child {
+  position: relative;
+  bottom: 8px;
+}
 .DetailsBlock-3-1 {
   display: flex;
   align-items: center;
@@ -123,6 +132,17 @@
 .SubmitReview:hover {
   background-color: rgba(203, 153, 126, 0.5);
   transform: scale(1.1);
+}
+.submitDialog {
+  display: flex;
+  flex-direction: column;
+}
+.submitDialogTextArea {
+  border: 1px solid #DDBEA9;
+  margin: 1vmax 0;
+  outline: none;
+  padding: 1rem;
+  font: 300 1rem "Montserrat";
 }
 
 @media screen and (max-width: 600px) {
