@@ -28,12 +28,26 @@ import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./components/Cart/OrderSuccess";
 import AllOrders from "./components/Order/MyOrders";
 import OrderDetails from "./components/Order/OrderDetails";
+// import AdminDashBoard from "./components/Admin/AdminDashboard"
+import ADash from "./components/Admin/ADash";
+import ProductList from "./components/Admin/ProductList"
+import NewProduct from "./components/Admin/NewProduct";
+import UpdateProduct from "./components/Admin/UpdateProduct";
+import OrdersList from "./components/Admin/OrdersList";
+import ProcessOrder from "./components/Admin/ProcessOrder";
+import ProductReviews from "./components/Admin/ProductReview";
+import UsersList from "./components/Admin/UsersList";
+import UpdateUser from "./components/Admin/UpdateUser";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = React.useState("");
   async function getStripeApiKey() {
-    const { data } = await axios.get(`/api/v1/stripeapikey`);
-    setStripeApiKey(data.stripeApiKey);
+    try {
+      const { data } = await axios.get(`/api/v1/stripeapikey`);
+      setStripeApiKey(data.stripeApiKey);
+    } catch (error) {
+      console.log(error);
+    }
   }
   React.useEffect(() => {
     Webfont.load({
@@ -50,7 +64,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <div style={{ width: "100%", minHeight: "70vh" }}>
+      <div style={{ width: "100%", minHeight: "70vh", backgroundColor:"#eee" }}>
         <Routes>
           <Route exaxt path="/" element={<Home />} />
           <Route exaxt path="/products" element={<Products />} />
@@ -149,6 +163,96 @@ function App() {
                 <OrderDetails />
               </ProtectedRoute>
             }
+          />
+          {/* <Route
+            exact
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <AdminDashBoard />
+              </ProtectedRoute>
+            }
+          /> */}
+          <Route
+            exact
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute  redirectTo="/login"> 
+                <ADash />
+              </ProtectedRoute>
+            } //Anybody can access this route (bug)
+          />
+          <Route
+            exact
+            path="/admin/products"
+            element={
+              <ProtectedRoute  redirectTo="/login"> 
+                <ProductList />
+              </ProtectedRoute>
+            } //Anybody can access this route (bug)
+          />
+          <Route
+            exact
+            path="/admin/product"
+            element={
+              <ProtectedRoute  redirectTo="/login"> 
+                <NewProduct />
+              </ProtectedRoute>
+            } //Anybody can access this route (bug)
+          />
+          <Route
+            exact
+            path="/admin/product/:id"
+            element={
+              <ProtectedRoute  redirectTo="/login"> 
+                <UpdateProduct />
+              </ProtectedRoute>
+            } //Anybody can access this route (bug)
+          />
+          <Route
+            exact
+            path="/admin/orders"
+            element={
+              <ProtectedRoute  redirectTo="/login"> 
+                <OrdersList />
+              </ProtectedRoute>
+            } //Anybody can access this route (bug)
+          />
+          <Route
+            exact
+            path="/admin/order/:id"
+            element={
+              <ProtectedRoute  redirectTo="/login"> 
+                <ProcessOrder />
+              </ProtectedRoute>
+            } //Anybody can access this route (bug)
+          />
+          <Route
+            exact
+            path="/admin/reviews"
+            element={
+              <ProtectedRoute  redirectTo="/login"> 
+                <ProductReviews />
+              </ProtectedRoute>
+            } //Anybody can access this route (bug)
+          />
+          <Route
+            exact
+            path="/admin/users"
+            element={
+              <ProtectedRoute  redirectTo="/login"> 
+                <UsersList />
+              </ProtectedRoute>
+            } //Anybody can access this route (bug)
+          />
+          <Route
+            exact
+            path="/admin/user/:id"
+            element={
+              <ProtectedRoute  redirectTo="/login"> 
+                <UpdateUser />
+              </ProtectedRoute>
+            } //Anybody can access this route (bug)
           />
         </Routes>
       </div>

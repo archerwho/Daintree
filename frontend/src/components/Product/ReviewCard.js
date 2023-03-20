@@ -8,7 +8,10 @@ const ReviewCard = ({ review }) => {
   // const { user } = useSelector((state) => state.user);
   return (
     <div className="ReviewCard">
-      <img src={defaultprofile} alt="profilepicture" />
+      <img
+        src={review.userImage ? review.userImage.url : defaultprofile}
+        alt="profilepicture"
+      />
       <p>
         {review.firstName} {review.lastName}
       </p>

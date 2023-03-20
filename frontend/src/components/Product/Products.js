@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Loader/Loader";
 import ProductCard from "../Product/ProductCard";
 import "./Products.css";
-import {useAlert} from "@blaumaus/react-alert"
+import { useAlert } from "@blaumaus/react-alert";
 import { useParams } from "react-router-dom";
 import { Pagination } from "@mui/material";
 import Slider from "@mui/material/Slider";
@@ -25,12 +25,13 @@ const categories = [
   "Electronics",
   "Cars",
   "Home Furnitures",
+  "Others",
 ];
 
 const Products = () => {
   document.title = "Products | Daintree";
   const { keyword } = useParams();
-  const alert = useAlert()
+  const alert = useAlert();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = React.useState([0, 300000]);
@@ -38,13 +39,8 @@ const Products = () => {
   const [rating, setRating] = useState(0);
 
   const dispatch = useDispatch();
-  const {
-    products,
-    loading,
-    error,
-    resultsPerPage,
-    filteredProductsCount,
-  } = useSelector((state) => state.products);
+  const { products, loading, error, resultsPerPage, filteredProductsCount } =
+    useSelector((state) => state.products);
   let count = 0;
   if (resultsPerPage < filteredProductsCount) {
     count = Math.ceil(filteredProductsCount / resultsPerPage);
@@ -58,9 +54,8 @@ const Products = () => {
   };
   useEffect(() => {
     if (error) {
-      alert.error(error)
-        dispatch(clearErrors());
-      
+      alert.error(error);
+      dispatch(clearErrors());
     }
     dispatch(getProduct(keyword, currentPage, price, category, rating));
   }, [dispatch, error, keyword, currentPage, price, category, rating, alert]);

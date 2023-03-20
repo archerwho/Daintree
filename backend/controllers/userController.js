@@ -203,11 +203,11 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
 
 // Get all Users --Admin
 exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
-  const user = await User.find({});
+  const users = await User.find({});
 
   res.status(200).json({
     success: true,
-    user,
+    users,
   });
 });
 
@@ -242,7 +242,7 @@ exports.updateUserType = catchAsyncErrors(async (req, res, next) => {
     runValidators: true,
   });
 
-  sendToken(user, 200, `Profile Updated.`, res);
+  sendToken(user, 200, `User Updated.`, res);
 });
 
 // Delete User -- Admin
@@ -253,6 +253,8 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
       new ErrorHandler(`User does not exist. Check Id:${req.params.id}`, 400)
     );
   }
+  const imageId = user.avatar.public_id;
+  await cloudinary.v2.uploader.destroy(imageId);
   await user.remove();
   res.status(200).json({
     success: true,

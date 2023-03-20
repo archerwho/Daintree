@@ -28,7 +28,6 @@ const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const alert = useAlert();
-
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
@@ -148,7 +147,7 @@ const ProductDetails = () => {
             <DialogContent className="submitDialog">
               <Rating
                 onChange={(e) => setRating(e.target.value)}
-                value={rating}
+                value={Number(rating)}
                 precision={0.5}
                 sx={{ color: "#CB997E" }}
               />

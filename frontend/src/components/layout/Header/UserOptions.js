@@ -35,7 +35,7 @@ export function UserOptions(props) {
   }
 
   function dashboard() {
-    navigate(`/dashboard`);
+    navigate(`/admin/dashboard`);
   }
   function orders() {
     navigate(`/orders/myorders`);

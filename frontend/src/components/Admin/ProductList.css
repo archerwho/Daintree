@@ -1,0 +1,64 @@
+.productListContainer {
+  width: 100%;
+  box-sizing: content-box;
+  margin: 0 auto;
+  margin-top: 2vmax;
+  /* padding: 0 2vmax 0 2vmax; */
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+/* #productListHeading {
+  font: 600 2rem "Montserrat";
+  padding: 0.5vmax;
+  box-sizing: border-box;
+  color: #cb997e;
+  transition: all 0.5s;
+  margin: 1rem;
+  text-align: center;
+} */
+.productListWidget {
+  display: flex;
+  width: 40%;
+  margin: 0 auto 1vmax auto;
+}
+
+.productListTable {
+  background-color: #eee;
+  border: 1px solid #cb997e !important;
+  width: 98%;
+  margin: 0 auto;
+}
+
+.productListTable div {
+  font: 300 1vmax "Montserrat";
+  /* color: #cb997e; */
+  border: none !important;
+}
+
+.productListTable svg {
+  color: #cb997e;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.productListTable svg:first-child {
+  padding: 0 1vmax;
+}
+.productListTable svg:first-child:hover {
+  color: #ddbea9;
+}
+.productListTable svg:last-child:hover {
+  color: red;
+}
+
+.MuiDataGrid-columnHeader div {
+  color: #ffe8d6;
+}
+
+@media screen and (max-width: 600px) {
+  .productListTable div {
+    font: 300 4vw "Montserrat";
+  }
+}

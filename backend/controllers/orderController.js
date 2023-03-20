@@ -26,6 +26,9 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     paidOn: Date.now(),
     user: req.user._id,
   });
+  order.orderItems.forEach(async (ord) => {
+    await updateStock(ord.product, ord.quantity);
+  });
 
   res.status(201).json({
     success: true,
@@ -33,6 +36,12 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     order,
   });
 });
+async function updateStock(id, quantity) {
+  const product = await Product.findById(id);
+
+  product.stock -= quantity;
+  await product.save({ validateBeforeSave: false });
+}
 
 // Get specific order details -- Logged In user
 exports.getOrderDetails = catchAsyncErrors(async (req, res, next) => {
@@ -53,10 +62,10 @@ exports.getOrderDetails = catchAsyncErrors(async (req, res, next) => {
 
 // Get all order details -- Logged In user
 exports.myOrders = catchAsyncErrors(async (req, res, next) => {
-  const orders = await Order.find({ user: req.user._id });
+  const orders = await Order.find();
 
   if (!orders) {
-    return next(new ErrorHandler(`No Orders yet by this user.`, 404));
+    return next(new ErrorHandler(`No Orders yet.`, 404));
   }
 
   res.status(201).json({
@@ -67,7 +76,7 @@ exports.myOrders = catchAsyncErrors(async (req, res, next) => {
 
 // Get all order details -- Admin
 exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
-  const orders = await Order.find();
+  const orders = await Order.find({});
 
   if (!orders) {
     return next(new ErrorHandler(`No Orders yet.`, 404));
@@ -97,10 +106,6 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler(`Order already Delivered.`, 400));
   }
 
-  order.orderItems.forEach(async (ord) => {
-    await updateStock(ord.product, ord.quantity);
-  });
-
   order.orderStatus = req.body.status;
 
   if (req.body.status === `Delivered`) {
@@ -111,13 +116,6 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
     success: true,
   });
 });
-
-async function updateStock(id, quantity) {
-  const product = await Product.findById(id);
-
-  product.stock -= quantity;
-  await product.save({ validateBeforeSave: false });
-}
 
 // Delete Order -- Admin
 exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {

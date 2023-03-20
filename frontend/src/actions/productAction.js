@@ -77,7 +77,7 @@ export const addNewProduct = (productData) => async (dispatch) => {
     dispatch({ type: NEW_PRODUCT_REQUEST });
 
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "multipart/form-data" },
     };
 
     const { data } = await axios.post(
@@ -104,7 +104,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });
 
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "multipart/form-data" },
     };
 
     const { data } = await axios.put(
@@ -222,7 +222,6 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
     });
   }
 };
-
 
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });

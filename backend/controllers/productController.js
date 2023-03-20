@@ -2,6 +2,7 @@ const Product = require(`../models/productModel`);
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require(`../middleware/catchAsyncErrors`);
 const ApiFeatures = require("../utils/apifeatures");
+const cloudinary = require(`cloudinary`);
 
 // Find all products.
 exports.getAllProducts = catchAsyncErrors(async (req, res) => {
@@ -25,6 +26,16 @@ exports.getAllProducts = catchAsyncErrors(async (req, res) => {
   });
 });
 
+// Get all products --ADMIN.
+exports.getAdminProducts = catchAsyncErrors(async (req, res) => {
+  const products = await Product.find();
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+
 //Get Product Details
 exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
@@ -41,6 +52,23 @@ exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
 
 //Launch a product. --Admin
 exports.addProduct = catchAsyncErrors(async (req, res) => {
+  let images = [];
+  if (typeof req.body.images === "string") {
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
+  }
+  const imagesLink = [];
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload(images[i], {
+      folder: "products",
+    });
+    imagesLink.push({
+      public_id: result.public_id,
+      url: result.secure_url,
+    });
+  }
+  req.body.images = imagesLink;
   req.body.createdBy = req.user.id; ///*********Confirm Later*********///
   const product = await Product.create(req.body);
   res.status(201).json({
@@ -57,6 +85,34 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
   if (!product) {
     return next(new ErrorHandler(`Product Not Found`, 404));
   }
+
+  let images = [];
+
+  if (typeof req.body.images === "string") {
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
+  }
+
+  if (images !== undefined) {
+    //Deleting images from cloudinary
+    for (let i = 0; i < product.images.length; i++) {
+      await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+    }
+  }
+
+  const imagesLink = [];
+
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload(images[i], {
+      folder: "products",
+    });
+    imagesLink.push({
+      public_id: result.public_id,
+      url: result.secure_url,
+    });
+  }
+  req.body.images = imagesLink;
 
   product = await Product.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -77,6 +133,11 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler(`Product Not Found`, 404));
   }
 
+  //Deleting images from cloudinary
+  for (let i = 0; i < product.images.length; i++) {
+    await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+  }
+
   await product.remove();
 
   res.status(200).json({
@@ -92,6 +153,7 @@ exports.productReview = catchAsyncErrors(async (req, res, next) => {
     createdBy: req.user._id,
     firstName: req.user.firstName,
     lastName: req.user.lastName,
+    userImage: req.user.avatar,
     rating: Number(rating),
     comment: comment,
   };
@@ -126,7 +188,7 @@ exports.productReview = catchAsyncErrors(async (req, res, next) => {
 
 // View all reviews for a specific Product
 exports.getAllProductReviews = catchAsyncErrors(async (req, res, next) => {
-  const product = await Product.findById(req.query.productId);
+  const product = await Product.findById(req.query.id);
   if (!product) {
     return next(new ErrorHandler(`Product Not Found`, 404));
   }
@@ -151,7 +213,13 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
   reviews.forEach((rev) => {
     avg = avg + rev.rating;
   });
-  const averageRating = avg / reviews.length;
+
+  let averageRating = 0;
+  if (reviews.length === 0) {
+    averageRating = 0;
+  } else {
+    averageRating = avg / reviews.length;
+  }
   const numberOfReviews = reviews.length;
   await Product.findByIdAndUpdate(
     req.query.productId,

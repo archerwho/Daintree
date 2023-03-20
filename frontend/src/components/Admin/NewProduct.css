@@ -1,0 +1,139 @@
+.newProductContainer {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #eee;
+    border-left: 1px solid rgba(0, 0, 0, 0.158);
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+  }
+  .newProductContainer h1 {
+    color: #CB997E;
+    font: 300 2rem "Montserrat";
+    text-align: center;
+  }
+  
+  .createProductForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 3vmax;
+    justify-content: space-evenly;
+    height: 80%;
+    width: 50vh;
+    background-color: #FFE8D6;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
+  }
+  
+  .createProductForm > div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  .createProductForm > div > input,
+  .createProductForm > div > select,
+  .createProductForm > div > textarea {
+    padding: 1vmax 4vmax;
+    padding-right: 1vmax;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    border-radius: 4px;
+    font: 300 0.9vmax "Montserrat";
+    outline: none;
+    color: #6B705C
+  }
+  
+  .createProductForm > div > svg {
+    position: absolute;
+    transform: translateX(1vmax);
+    font-size: 1.6vmax;
+    color: #CB997E;
+  }
+  
+  #createProductFormFile > input {
+    display: flex;
+    padding: 0%;
+  }
+  
+  #createProductFormFile > input::file-selector-button {
+    cursor: pointer;
+    width: 100%;
+    z-index: 2;
+    height: 5vh;
+    border: none;
+    margin: 0%;
+    font: 400 0.8vmax "Montserrat";
+    transition: all 0.5s;
+    padding: 0 1vmax;
+    color: #6B705C;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  #createProductFormFile > input::file-selector-button:hover {
+    background-color: #DDBEA9;
+  }
+  
+  #createProductFormImage {
+    width: 100%;
+    overflow: auto;
+  }
+  
+  #createProductFormImage > img {
+    width: 3vmax;
+    margin: 0 0.5vmax;
+  }
+  #createProductBtn {
+    border: none;
+    background-color: #CB997E;
+    color: white;
+    font: 300 0.9vmax "Montserrat";
+    width: 100%;
+    padding: 0.8vmax;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  }
+  
+  #createProductBtn:hover {
+    background-color: #DDBEA9;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .newProductContainer {
+      background-color: rgb(255, 255, 255);
+    }
+    .createProductForm {
+      padding: 5vmax;
+    }
+  
+    .createProductForm > div > input,
+    .createProductForm > div > select,
+    .createProductForm > div > textarea {
+      padding: 2.5vmax 5vmax;
+      font: 300 1.7vmax "Montserrat";
+    }
+  
+    .createProductForm > div > svg {
+      font-size: 2.8vmax;
+    }
+  
+    #createProductFormFile > img {
+      width: 8vmax;
+      border-radius: 100%;
+    }
+  
+    #createProductFormFile > input::file-selector-button {
+      height: 7vh;
+      font: 400 1.8vmax "Montserrat";
+    }
+  
+    #createProductBtn {
+      font: 300 1.9vmax "Montserrat";
+      padding: 1.8vmax;
+    }
+  }
+  

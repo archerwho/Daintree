@@ -1,0 +1,66 @@
+.sidebar {
+  font-family: "Montserrat";
+  flex: 1;
+  border-right: 0.5px solid #ddbea9;
+  min-height: 100vh;
+  background-color: #ffe8d6;
+}
+.top {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+  font-size: 2vmax;
+  font-weight: bold;
+  color: #cb997e;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+hr {
+  height: 0;
+  border: 0.5px solid #ddbea9;
+}
+
+.center {
+  padding-left: 10px;
+}
+.center > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.title {
+  font-size: 1vmax;
+  font-weight: bold;
+  color: #cb997e;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.center > ul > li {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+}
+.center > ul > li > span {
+  font-size: 1.1vmax;
+  color: #cb997e;
+}
+.center > ul > li:hover {
+  background-color: #ebd1c0;
+}
+
+.icon {
+  font-size: 18px;
+  color: #cb997e;
+}
+
+.title > span {
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: 10px;
+}
