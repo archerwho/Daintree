@@ -28,9 +28,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./components/Cart/OrderSuccess";
 import AllOrders from "./components/Order/MyOrders";
 import OrderDetails from "./components/Order/OrderDetails";
-// import AdminDashBoard from "./components/Admin/AdminDashboard"
-import ADash from "./components/Admin/ADash";
-import ProductList from "./components/Admin/ProductList"
+import ProductList from "./components/Admin/ProductList";
 import NewProduct from "./components/Admin/NewProduct";
 import UpdateProduct from "./components/Admin/UpdateProduct";
 import OrdersList from "./components/Admin/OrdersList";
@@ -38,6 +36,9 @@ import ProcessOrder from "./components/Admin/ProcessOrder";
 import ProductReviews from "./components/Admin/ProductReview";
 import UsersList from "./components/Admin/UsersList";
 import UpdateUser from "./components/Admin/UpdateUser";
+import ContactForm from "./components/Contact/ContactForm";
+import AdminDashboard from "./components/Admin/AdminDashboard";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = React.useState("");
@@ -64,7 +65,9 @@ function App() {
   return (
     <Router>
       <Header />
-      <div style={{ width: "100%", minHeight: "70vh", backgroundColor:"#eee" }}>
+      <div
+        style={{ width: "100%", minHeight: "79vh", backgroundColor: "#eee" }}
+      >
         <Routes>
           <Route exaxt path="/" element={<Home />} />
           <Route exaxt path="/products" element={<Products />} />
@@ -106,6 +109,7 @@ function App() {
           />
           <Route exaxt path="/cart" element={<Cart />} />
           <Route exaxt path="/about" element={<About />} />
+          <Route exaxt path="/contact" element={<ContactForm />} />
           <Route
             exact
             path="/shipping"
@@ -124,19 +128,19 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route
-            exact
-            path="/process/payment"
-            element={
-              stripeApiKey && (
+          {stripeApiKey && (
+            <Route
+              exact
+              path="/process/payment"
+              element={
                 <ProtectedRoute redirectTo="/login">
                   <Elements stripe={loadStripe(stripeApiKey)}>
                     <Payment />
                   </Elements>
                 </ProtectedRoute>
-              )
-            }
-          />
+              }
+            />
+          )}
           <Route
             exact
             path="/success"
@@ -164,96 +168,88 @@ function App() {
               </ProtectedRoute>
             }
           />
-          {/* <Route
-            exact
-            path="/admin/dashboard"
-            element={
-              <ProtectedRoute redirectTo="/login">
-                <AdminDashBoard />
-              </ProtectedRoute>
-            }
-          /> */}
           <Route
             exact
             path="/admin/dashboard"
             element={
-              <ProtectedRoute  redirectTo="/login"> 
-                <ADash />
+              <ProtectedRoute isAdmin={true} redirectTo="/login">
+                <AdminDashboard />
               </ProtectedRoute>
-            } //Anybody can access this route (bug)
+            }
           />
           <Route
             exact
             path="/admin/products"
             element={
-              <ProtectedRoute  redirectTo="/login"> 
+              <ProtectedRoute isAdmin={true} redirectTo="/login">
                 <ProductList />
               </ProtectedRoute>
-            } //Anybody can access this route (bug)
+            }
           />
           <Route
             exact
             path="/admin/product"
             element={
-              <ProtectedRoute  redirectTo="/login"> 
+              <ProtectedRoute isAdmin={true} redirectTo="/login">
                 <NewProduct />
               </ProtectedRoute>
-            } //Anybody can access this route (bug)
+            }
           />
           <Route
             exact
             path="/admin/product/:id"
             element={
-              <ProtectedRoute  redirectTo="/login"> 
+              <ProtectedRoute isAdmin={true} redirectTo="/login">
                 <UpdateProduct />
               </ProtectedRoute>
-            } //Anybody can access this route (bug)
+            }
           />
           <Route
             exact
             path="/admin/orders"
             element={
-              <ProtectedRoute  redirectTo="/login"> 
+              <ProtectedRoute isAdmin={true} redirectTo="/login">
                 <OrdersList />
               </ProtectedRoute>
-            } //Anybody can access this route (bug)
+            }
           />
           <Route
             exact
             path="/admin/order/:id"
             element={
-              <ProtectedRoute  redirectTo="/login"> 
+              <ProtectedRoute isAdmin={true} redirectTo="/login">
                 <ProcessOrder />
               </ProtectedRoute>
-            } //Anybody can access this route (bug)
+            }
           />
           <Route
             exact
             path="/admin/reviews"
             element={
-              <ProtectedRoute  redirectTo="/login"> 
+              <ProtectedRoute isAdmin={true} redirectTo="/login">
                 <ProductReviews />
               </ProtectedRoute>
-            } //Anybody can access this route (bug)
+            }
           />
           <Route
             exact
             path="/admin/users"
             element={
-              <ProtectedRoute  redirectTo="/login"> 
+              <ProtectedRoute isAdmin={true} redirectTo="/login">
                 <UsersList />
               </ProtectedRoute>
-            } //Anybody can access this route (bug)
+            }
           />
           <Route
             exact
             path="/admin/user/:id"
             element={
-              <ProtectedRoute  redirectTo="/login"> 
+              <ProtectedRoute isAdmin={true} redirectTo="/login">
                 <UpdateUser />
               </ProtectedRoute>
-            } //Anybody can access this route (bug)
+            }
           />
+          <Route path="" element={<PageNotFound />} />
         </Routes>
       </div>
       <Footer />

@@ -20,3 +20,6 @@ input::-webkit-inner-spin-button,
 .redColor {
   color: red !important;
 }
+.orangeColor {
+  color: orange;
+}

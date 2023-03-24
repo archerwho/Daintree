@@ -24,7 +24,7 @@
   margin-bottom: 5vmax;
   cursor: pointer;
   border: 3px solid #cb997e;
-  border-radius: 0;
+  border-radius: 5px;
   padding: 1vmax;
   transition: all 0.5s;
   width: 18vmax;
@@ -51,4 +51,38 @@
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
+}
+
+@media screen and (max-width: 450px) {
+  .banner > p {
+    font: 300 2vmax "Montserrat";
+  }
+  .banner > h1 {
+    margin: 3vmax;
+  }
+  .banner > a {
+    text-decoration: none;
+    height: 60px;
+  }
+  .banner > a > button {
+    cursor: pointer;
+    width: 20vmax;
+    font: 800 1.4vmax "Montserrat";
+  }
+  .homeHeading {
+    font-size: 2vmax;
+    border-bottom: 2px solid #ddbea9;
+    width: 20vmax;
+    padding: 1vmax;
+    margin: 0.5vmax auto;
+}
+.featuredproducts {
+  display: flex;
+  margin: 1vmax auto;
+  width: 100vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+
 }

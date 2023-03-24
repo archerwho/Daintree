@@ -1,17 +1,16 @@
 .profileContainer {
   display: flex;
-  height: 90vh;
+  height: fit-content;
   width: 100vw;
-  position: absolute;
-  top: 5%;
-  left: 0%;
+  position: relative;
+  margin-top: 3vmax;
   max-width: 100%;
   background-color: #eee;
 }
 
 .profileContainer > div {
   display: flex;
-  height: 100vh;
+  height: fit-content;
   width: 100vw;
   max-width: 100%;
   flex-direction: column;
@@ -96,9 +95,8 @@
 @media screen and (max-width: 600px) {
   .profileContainer {
     flex-direction: column;
-    height: 60vh;
-    position: absolute;
-    top: 13%;
+    margin-top: 3vmax;
+    position: relative;
   }
 
   .profileContainer > div:first-child > h1 {
@@ -115,6 +113,7 @@
     padding-top: 0;
     text-align: center;
     align-items: center;
+    padding: 3vmax;
   }
 
   .profileContainer > div:last-child > div > h4 {
@@ -126,6 +125,7 @@
     margin: 0.5vmax 0;
   }
   .profileContainer > div:last-child > div:last-child {
+    width: 100%;
     flex-direction: row;
     justify-content: space-evenly;
   }

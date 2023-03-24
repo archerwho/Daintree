@@ -14,9 +14,11 @@
 }
 .PageNotFound > p {
   font-size: 2vmax;
+  font: 400 3vmax "Montserrat";
+
 }
-.PageNotFound > a {
-  background-color: #eee;
+.PageNotFound > p:last-child {
+  background-color: #cb997e;
   color: white;
   border: none;
   padding: 1vmax 3vmax;
@@ -24,10 +26,11 @@
   font: 400 1vmax "Montserrat";
   text-decoration: none;
   margin: 2vmax;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 600px) {
-  .PageNotFound > a {
+  .PageNotFound > p:last-child {
     padding: 3vw 6vw;
     font: 400 4vw "Montserrat";
     margin: 2vmax;

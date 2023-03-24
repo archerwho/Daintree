@@ -41,7 +41,7 @@
   margin: 0 1vmax;
   padding-left: 2vmax;
   font: 600 1vmax "Montserrat";
-  color: #DDBEA9;
+  color: #ddbea9;
 }
 
 .orderDetailsCartItems > p {
@@ -155,8 +155,12 @@
   .orderDetailsCartItemsContainer > div > span {
     font: 100 4vw "Montserrat";
   }
-  
+
   .CartItemCard > img {
     width: 5vmax;
+  }
+  .cartContainer3 {
+    width: 100%;
+    grid-template-columns: 3fr 1.5fr 1.5fr;
   }
 }

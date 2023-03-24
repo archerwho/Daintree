@@ -14,7 +14,7 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     shippingPrice,
     totalPrice,
   } = req.body;
-
+  
   const order = await Order.create({
     shippingInfo,
     orderItems,
@@ -25,6 +25,7 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     totalPrice,
     paidOn: Date.now(),
     user: req.user._id,
+    userName: `${req.user.firstName} ${req.user.lastName}`,
   });
   order.orderItems.forEach(async (ord) => {
     await updateStock(ord.product, ord.quantity);

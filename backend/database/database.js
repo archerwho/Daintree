@@ -6,7 +6,9 @@ async function connectDB() {
   mongoose
     .connect(process.env.DB_URL)
     .then((data) =>
-      console.log(`Server connected to the Database, DB Host: ${data.connection.host}`)
+      console.log(
+        `Server connected to the Database, DB Host: ${data.connection.host}`
+      )
     );
 
   //   mongoose.connection.close();

@@ -1,14 +1,13 @@
 .LoginRegisterContainer {
     width: 100vw;
-    height: 100vh;
+    height: fit-content;
     max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #eee;
     position: relative;
-    top: 3%;
-    left: 0;
+    margin-top: 2vmax;
   }
   
   .LoginRegisterBox {
@@ -88,11 +87,11 @@
   }
   
   .loginForm > a {
-    color: #DDBEA9;
+    color: #CB997E;
     text-decoration: none;
     align-self: flex-end;
     transition: all 0.5s;
-    font: 500 0.8vmax "Montserrat";
+    font: 500 1vmax "Montserrat";
     cursor: pointer;
   }
   
@@ -167,11 +166,11 @@
   @media screen and (max-width: 600px) {
     .LoginRegisterContainer {
       background-color: #eee;
-      margin-top: 7vmax;
+      margin-top: 1vmax;
     }
     .LoginRegisterBox {
       width: 100vw;
-      height: 95vh;
+      height: 60vh;
 
     }
     .login-register-toggle {

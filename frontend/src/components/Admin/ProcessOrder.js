@@ -34,7 +34,7 @@ const ProcessOrder = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
-  const [status, setStatus] = useState("order.orderStatus");
+  const [status, setStatus] = useState("");
 
   useEffect(() => {
     if (error) {

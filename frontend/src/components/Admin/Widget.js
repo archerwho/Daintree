@@ -41,6 +41,11 @@ const Widget = (props) => {
       }
     });
 
+  const shipped =
+    orders && orders.filter((order) => order.orderStatus === "Shipped").length;
+  const processing =
+    orders && orders.filter((order) => order.orderStatus === "Proccessing").length;
+
   let data;
   switch (props.type) {
     case "user":
@@ -149,13 +154,13 @@ const Widget = (props) => {
       data = {
         title: "ORDERS DELIVERED",
         isMoney: false,
-        number: delivered,
+        number: delivered ? delivered : "0",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
-              color: "goldenrod",
+              color: "green",
             }}
           />
         ),
@@ -163,15 +168,31 @@ const Widget = (props) => {
       break;
     case "proccessing":
       data = {
-        title: "ORDERS PROCESSING",
+        title: "ORDERS IN PROCESSING",
         isMoney: false,
-        number: orders && orders.length - delivered,
+        number: processing ? processing : "0",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
-              color: "goldenrod",
+              color: "red",
+            }}
+          />
+        ),
+      };
+      break;
+    case "shipped":
+      data = {
+        title: "ORDERS SHIPPED",
+        isMoney: false,
+        number: shipped ? shipped : "0",
+        icon: (
+          <ShoppingCartOutlinedIcon
+            className="icon"
+            style={{
+              backgroundColor: "rgba(218, 165, 32, 0.2)",
+              color: "orange",
             }}
           />
         ),

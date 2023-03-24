@@ -1,16 +1,15 @@
 import React from "react";
-import Link from "@mui/material/Link";
 import CardMedia from "@mui/material/CardMedia";
 import "./ProductCard.css";
 import Stars from "../Rating/Stars";
+import { useNavigate } from "react-router-dom";
+
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate()
+
   return (
-    <Link
-      href={`/product/${product._id}`}
-      sx={{ textDecoration: "none", cursor: "pointer" }}
-    >
-      <div className="productCard">
+      <div onClick={()=>navigate(`/product/${product._id}`)} className="productCard">
         <div>
           <CardMedia
             component="img"
@@ -26,7 +25,6 @@ const ProductCard = ({ product }) => {
         <Stars stars={product.averageRating} review={product.numberOfReviews} />
         <span className="productPrice">{`₹ ${product.price}`}</span>
       </div>
-    </Link>
   );
 };
 

@@ -28,6 +28,7 @@
 
 .cartPage {
   padding: 5vmax;
+  margin: 1vmax;
 }
 
 .cartHeader {
@@ -188,7 +189,9 @@
   }
 
   .cartGrossTotalBox {
-    padding: 2vmax;
+    margin-left: 20%;
+    margin-right: 3%;
+    padding-right: 0;
     font: 300 2vmax "Montserrat";
   }
 

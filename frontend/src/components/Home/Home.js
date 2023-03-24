@@ -35,7 +35,7 @@ function Home() {
               <h1>Find Awesome Products Below...</h1>
               <a href="#featuredproducts">
                 <IconButton sx={{ color: "#cb997e" }}>
-                  Let's Get Shopping...{" "}
+                  Let's Get Shopping...
                   <ArrowForwardIcon
                     sx={{ flexGrow: 0.5, color: "#cb997e", font: "30px" }}
                   />

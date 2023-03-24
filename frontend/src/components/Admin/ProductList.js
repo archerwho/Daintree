@@ -56,14 +56,21 @@ const ProductList = () => {
     {
       field: "name",
       headerName: "Name",
-      minWidth: 350,
+      minWidth: 300,
       flex: 1,
+    },
+    {
+      field: "reviews",
+      headerName: "Reviews",
+      type: "string",
+      minWidth: 150,
+      flex: 0.5,
     },
     {
       field: "stock",
       headerName: "Stock",
       type: "string",
-      minWidth: 150,
+      minWidth: 120,
       flex: 0.3,
       cellClassName: (params) =>
         params.row.stock === "Out of Stock" ? "redColor" : "greenColor",
@@ -73,7 +80,7 @@ const ProductList = () => {
       field: "price",
       headerName: "Price",
       type: "number",
-      minWidth: 180,
+      minWidth: 150,
       flex: 0.5,
     },
 
@@ -106,6 +113,7 @@ const ProductList = () => {
         stock: item.stock === 0 ? "Out of Stock" : item.stock,
         price: item.price,
         name: item.name,
+        reviews: item.reviews.length,
       });
     });
 

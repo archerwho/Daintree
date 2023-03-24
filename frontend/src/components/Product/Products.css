@@ -2,7 +2,7 @@
   color: #cb997e;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  font-size: 1.4vmax;
+  font-size: 2vmax;
   border-bottom: 2px solid #ddbea9;
   width: 20vmax;
   padding: 1vmax;
@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2vmax auto 0 auto;
+  margin: 2vmax auto 1vmax auto;
 }
 .filterBox {
   width: 14vmax;
@@ -54,11 +54,39 @@
   .products {
     margin-left: 0;
     margin-right: 0;
+    padding: 0;
+    width: 100vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
   }
   .filterBox {
     position: unset;
     margin: 1vmax auto;
+    width: 85%;
+  }
+  .category-link {
+    font: 400 1.3vmax "Montserrat";
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .productsHeading {
+    font-size: 2vmax;
     width: 20vmax;
+  }
+  .products {
+    padding: 0;
+    width: 100vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+  
+  .filterBox {
+    position: unset;
+    margin: 1vmax auto;
+    width: 85%;
   }
   .category-link {
     font: 400 1.3vmax "Montserrat";

@@ -19,8 +19,7 @@
   color: #cb997e;
 }
 
-.confirmshippingAreaBox,
-.confirmCartItemsContainer {
+.confirmshippingAreaBox {
   margin: 2vmax;
 }
 
@@ -51,34 +50,6 @@
   padding-top: 2vmax;
 }
 
-.confirmCartItemsContainer {
-  max-height: 20vmax;
-  overflow-y: auto;
-}
-
-.confirmCartItemsContainer > div {
-  display: flex;
-  font: 400 1vmax "Montserrat";
-  align-items: center;
-  justify-content: space-between;
-  margin: 2vmax 0;
-}
-
-.confirmCartItemsContainer > div > img {
-  width: 4vmax;
-}
-
-.confirmCartItemsContainer > div > a {
-  color: #6b705c;
-  margin: 0 2vmax;
-  width: 60%;
-  text-decoration: none;
-}
-
-.confirmCartItemsContainer > div > span {
-  font: 100 1vmax "Montserrat";
-  color: #5e5e5e;
-}
 .cartPage2 {
   padding: 1vmax;
   margin-top: 0.5vmax;
@@ -86,7 +57,7 @@
 
 .cartHeader2 {
   background-color: #cb997e;
-  width: 90%;
+  width: 100%;
   box-sizing: border-box;
   margin: auto;
   color: #ffe8d6;
@@ -105,7 +76,7 @@
 }
 
 .cartContainer2 {
-  width: 90%;
+  width: 100%;
   margin: auto;
   display: grid;
   grid-template-columns: 4fr 1fr 1fr;
@@ -142,7 +113,7 @@
 
 .cartGrossTotal2 {
   display: grid;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   grid-template-columns: 2fr 3fr;
 }
@@ -222,7 +193,9 @@
     border-left: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.247);
   }
-
+  .confirmshippingArea {
+    padding: 3vmax;
+  }
   .confirmshippingArea > p {
     font: 400 6vw "Montserrat";
   }
@@ -239,31 +212,15 @@
     font: 100 4vw "Montserrat";
     margin: 0 0 0 8vmax;
   }
-
+  .confirmCartItems {
+    padding: 3vmax;
+  }
+  .cartPage2 {
+    padding: 0vmax;
+    margin-top: 0.5vmax;
+  }
   .confirmCartItems > p {
     font: 400 6vw "Montserrat";
-  }
-
-  .confirmCartItemsContainer {
-    max-height: 50vw;
-  }
-
-  .confirmCartItemsContainer > div {
-    font: 400 4vw "Montserrat";
-    margin: 4vw 0;
-  }
-
-  .confirmCartItemsContainer > div > img {
-    width: 10vw;
-  }
-
-  .confirmCartItemsContainer > div > a {
-    margin: 0;
-    width: 30%;
-  }
-
-  .confirmCartItemsContainer > div > span {
-    font: 100 4vw "Montserrat";
   }
   .cartInput2 > input {
     font: 500 2vmax "Montserrat";
@@ -277,9 +234,14 @@
   .cartHeader2 {
     font: 300 2vmax "Montserrat";
   }
-
+  .cartContainer2 {
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 3fr 1.5fr 1.5fr;
+  }
   .orderSummary {
-    padding: 12vw;
+    padding: 3vmax;
   }
 
   .orderSummary > p {

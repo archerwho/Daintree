@@ -1,0 +1,34 @@
+.contactContainer {
+  margin-top: 10vmax;
+  min-height: fit-content;
+  margin: 3vmax;
+  display: grid;
+  place-items: left;
+  background-color: #eee;
+  position: relative;
+  padding: 2vmax;
+  font-family: "Montserrat";
+}
+.contactContainer > h1 {
+  color: #cb997e;
+  padding: 1vmax;
+}
+
+.contactContainer > span {
+  width: 70%;
+  color: #ddbea9;
+  padding: 1vmax;
+  padding-top: 0;
+}
+.contactContainer > a {
+  color: #cb997e;
+  text-decoration: none;
+  font: 400 2vmax "Montserrat";
+  padding: 1vmax;
+}
+@media screen and (max-width: 450px) {
+  .contactContainer > span {
+    width: 80%;
+    
+  }
+}

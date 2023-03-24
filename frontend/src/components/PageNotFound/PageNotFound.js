@@ -1,15 +1,15 @@
 import React from "react";
 import ErrorIcon from "@mui/icons-material/Error";
-import "./NotFound.css";
-import { Link } from "react-router-dom";
+import "./PageNotFound.css";
+import { useNavigate } from "react-router-dom";
 
 const NotFound = () => {
+  const navigate = useNavigate();
   return (
     <div className="PageNotFound">
       <ErrorIcon />
-
-      <Typography>Page Not Found </Typography>
-      <Link to="/">Home</Link>
+      <p>Page Not Found </p>
+      <p onClick={() => navigate(`/`)}>Home</p>
     </div>
   );
 };

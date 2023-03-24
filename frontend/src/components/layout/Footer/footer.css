@@ -1,5 +1,5 @@
 footer {
-  margin-top: 5vmax;
+  margin-top: 0;
   padding: 1.5vmax;
   font-family: "Montserrat", sans-serif;
   background-color: #cb997e;
@@ -73,4 +73,28 @@ footer {
   transition: all 0.5s;
   background-color: white;
   color: #c4302b;
+}
+
+@media screen and (max-width: 450px) {
+  .leftfooter > img {
+    width: 10vmax;
+    padding-left: 2vmax;
+  }
+  .midfooter > h1 {
+    font-size: 4vmax;
+  }
+  .midfooter > h1 > p {
+    font-size: 1.5vmax;
+  }
+  .midfooter > p {
+    max-width: 70%;
+    font-size: 1vmax;
+    margin-top: 1vmax;
+  }
+  .rightfooter {
+   padding-right: 1vmax;;
+  }
+  .rightfooter > h4 {
+    font-size: 1.5vmax;
+  }
 }

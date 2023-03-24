@@ -13,7 +13,7 @@ import {
 } from "../../actions/orderAction";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 import { useNavigate } from "react-router-dom";
-// import Widget from "./Widget";
+import Widget from "./Widget";
 
 const OrdersList = () => {
   document.title = `All Orders | ADMIN`;
@@ -57,7 +57,11 @@ const OrdersList = () => {
       minWidth: 150,
       flex: 0.5,
       cellClassName: (params) => {
-        return params.row.status === "Delivered" ? "greenColor" : "redColor";
+        return (
+          (params.row.status === "Delivered" && "greenColor") ||
+          (params.row.status === "Shipped" && "orangeColor") ||
+          "redColor"
+        );
       },
     },
     {
@@ -112,10 +116,11 @@ const OrdersList = () => {
         <SideBar />
         <div className="homeContainer productListContainer">
           {/* <h1 id="productListHeading">ALL ORDERS</h1> */}
-          {/* <div className="productListWidget">
-            <Widget type="delivered" dataAA={orders} />
+          <div className="productListWidget">
             <Widget type="proccessing" />
-          </div> */}
+            <Widget type="shipped" />
+            <Widget type="delivered" />
+          </div>
           <DataGrid
             rows={rows}
             columns={columns}
