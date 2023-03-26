@@ -77,10 +77,10 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   const resetToken = user.getResetPasswordToken();
   await user.save({ validateBeforeSave: false });
 
-  // const resetPasswordUrl = `${req.protocol}://${req.get(
-  //   `host`
-  // )}/api/v1/password/reset/${resetToken}`;
-  const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+  const resetPasswordUrl = `${req.protocol}://${req.get(
+    `host`
+  )}/api/v1/password/reset/${resetToken}`;
+  // const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
   const message = `Link to reset your password for Daintree is as follows :- \n\n ${resetPasswordUrl} \n\n If you did not request to reset your password, Report to us at ${process.env.SMTP_MAIL}.`;
 
