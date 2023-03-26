@@ -26,9 +26,13 @@ app.use(`/api/v1`, userRoute);
 app.use(`/api/v1`, orderRoute);
 app.use(`/api/v1`, paymentRoute);
 
+//Serving the frontend
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.get("*", (_, res) => {
-  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+  res.sendFile(
+    path.resolve(__dirname, "../frontend/build/index.html"),
+    (error) => res.status(500).send(error)
+  );
 });
 
 //Middleware for error
