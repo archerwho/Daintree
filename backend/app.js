@@ -4,7 +4,7 @@ const bodyParser = require(`body-parser`);
 const fileUpload = require(`express-fileupload`);
 const errorMiddleware = require("./middleware/error");
 const dotenv = require(`dotenv`);
-const path = require(`path`);
+const path = require("path");
 
 const app = express();
 app.use(express.json({ limit: "50mb" }));
