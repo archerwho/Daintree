@@ -44,7 +44,7 @@ const NewProduct = () => {
     "Electronics",
     "Cars",
     "Home Furnitures",
-    "Others"
+    "Others",
   ];
 
   useEffect(() => {

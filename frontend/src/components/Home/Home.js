@@ -13,15 +13,14 @@ function Home() {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { loading, error, products } = useSelector(
-    //, productsCount
     (state) => state.products
   );
   useEffect(() => {
+    dispatch(getProduct());
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
-    dispatch(getProduct());
   }, [dispatch, error, alert]);
 
   return (

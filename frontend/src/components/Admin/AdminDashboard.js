@@ -1,18 +1,17 @@
 import React from "react";
 import "./AdminDashboard.css";
-import Sidebar from "./Sidebar";
+import SideBar from "./Sidebar";
 import Widget from "./Widget";
 import Featured from "./Featured";
 import Chart from "./Chart";
 import Table from "./Table";
-
 
 const AdminDashboard = () => {
   document.title = `Admin Dashboard | Daintree`;
 
   return (
     <div className="home">
-      <Sidebar />
+      <SideBar />
       <div className="homeContainer">
         <div className="widgets">
           <Widget type="user" />

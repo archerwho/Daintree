@@ -12,13 +12,14 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAlert } from "@blaumaus/react-alert";
 import { logout } from "../../actions/userAction";
+
 // import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 // import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 // import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 // import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 // import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 
-const Sidebar = () => {
+export default function SideBar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -30,7 +31,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="sidebar">
+    <div className="sidebar" >
       <div className="top">
         <span onClick={() => navigate(`/`)} className="logo">
           Daintree
@@ -100,6 +101,4 @@ const Sidebar = () => {
       </div>
     </div>
   );
-};
-
-export default Sidebar;
+}

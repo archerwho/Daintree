@@ -24,9 +24,7 @@ const About = () => {
               alt="Developer"
             />
             <Typography>Shubham Gupta</Typography>
-            <Button onClick={visitInstagram} >
-              Visit Instagram
-            </Button>
+            <Button onClick={visitInstagram}>Visit Instagram</Button>
             <span>
               This is a sample wesbite made by @archer.who. as a portfolio
               project.
