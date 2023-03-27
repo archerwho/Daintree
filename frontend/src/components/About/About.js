@@ -31,7 +31,7 @@ const About = () => {
             </span>
           </div>
           <div className="aboutSectionContainer2">
-            <Typography component="h2">Our Brands</Typography>
+            <Typography component="h2">Our Social Media Presence</Typography>
             <div>
               <div className="face">
                 <Facebook />
