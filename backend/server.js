@@ -7,7 +7,7 @@ const connectDB = require("./database/database");
 process.on(`uncaughtException`, (error) => {
   console.log(`Error: ${error.message}`);
   console.log(`Shutting Down the Server due to Uncaught Exception.`);
-  // server.close(() => process.exit(1));
+  server.close(() => process.exit(1));
 });
 
 //configuring the DOTENV
@@ -23,7 +23,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-app.listen(process.env.PORT, () =>
+const server = app.listen(process.env.PORT, () =>
   console.log(`Server started at http://localhost:${process.env.PORT}`)
 );
 
@@ -31,7 +31,7 @@ app.listen(process.env.PORT, () =>
 process.on(`unhandledRejection`, (error) => {
   console.log(`Error: ${error.message}`);
   console.log(`Shutting Down the Server due to Unhandled Promise Rejection.`);
-  // server.close(() => {
-  //   process.exit(1);
-  // });
+  server.close(() => {
+    process.exit(1);
+  });
 });
