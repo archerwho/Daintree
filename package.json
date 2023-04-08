@@ -2,10 +2,10 @@
   "name": "daintree",
   "version": "1.0.0",
   "description": "ecommerce-web-application",
-  "main": "backend/server.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend/server.js",
+    "start": "cd backend && npm start",
     "dev": "npx nodemon"
   },
   "author": "Shubham Gupta (Archer)",
