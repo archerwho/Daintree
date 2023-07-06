@@ -8,7 +8,7 @@ This is a fully functional e-commerce web application built to provide users wit
 - User Registration and Login: Users can create an account, login securely, and manage their profiles.
 - Product Catalog: A comprehensive catalog displaying various products with detailed information.
 - Shopping Cart: Users can add products to their cart, manage quantities, and proceed to checkout.
-- Secure Payments: Integration with a trusted payment gateway to facilitate secure online transactions.
+- Secure Payments: Integration with a trusted payment method Stripe to facilitate secure online transactions.
 - Order Tracking: Users can track the status of their orders and view order history.
 - Product Search: Advanced search functionality to help users find products based on keywords, categories, and filters.
 - User Reviews and Ratings: Users can provide feedback and ratings for products they have purchased.
